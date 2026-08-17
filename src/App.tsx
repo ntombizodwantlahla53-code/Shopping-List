@@ -25,7 +25,7 @@ const addLink = (link: LoginTypes) => {
       <Register onAddLink ={() => setShowList(false)} 
       />
         ) : (
-        <Login onAddLink={addLink}
+        <Login onAddLink= {() => setShowList(false)} 
         onView={() => setShowList(true)} />
         )}
 
