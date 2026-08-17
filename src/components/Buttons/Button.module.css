@@ -1,0 +1,42 @@
+.button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  height: 50px;
+ border: solid black;
+ width:120px;
+ margin: 8px;
+}
+.button:hover{
+  background-color: lightseagreen;
+}
+
+.inputting {
+  background-color: #007bff;
+  color: white;
+  width: 100%;
+  justify-content: center;
+}
+
+.undoBtn {
+  background-color: #616970;
+  color: white;
+}
+
+.danger {
+  background-color: #dc3545;
+  color: white;
+}
+.danger:hover{
+  background-color: red;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+

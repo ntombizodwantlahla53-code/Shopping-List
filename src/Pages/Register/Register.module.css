@@ -1,0 +1,104 @@
+.linkContainer{
+    background-color: rgb(234, 226, 226);
+    border: solid black;
+    border-radius: 24px;
+    width: 95vw;
+    max-width: 100%;
+    margin: 20px auto; 
+    padding: 25px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    
+}
+.Topic{
+  
+}
+.Mytitle{
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+  color: #111620;
+  text-align: center;
+  font-size: 30px;
+  font: bold;
+  text-decoration: underline;
+  margin-top: 30px;
+}
+.Myp{
+  margin-bottom: 40px;
+margin-top: 30px;
+ 
+}
+
+label{
+    display: block;
+    color:#94a3b8;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.MyButton{
+  margin-top: 30px;
+ color: black;
+ background-color: rgb(32, 183, 193);
+ height: 30px;
+ width: 120px;
+ border: solid black;
+
+}
+.MyButton:hover{
+  background-color: rgb(65, 242, 255);
+}
+.insideContainer{
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  box-sizing: border-box;
+}
+.inputtitle{
+  color: #ffffff;
+  background-color: white;
+  box-sizing: border-box;
+  font: bolder;
+  width: 100% ;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+.inputtitle:hover{
+  background-color: rgb(65, 242, 255);
+  color: black;
+  
+}
+.inputdesc{
+  color: #ffffff;
+  background-color: white;
+  font: bold;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.inputdesc:hover{
+  background-color: rgb(65, 242, 255);
+  color: black;
+}
+
+.password{
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: end;
+  color: #111620;
+  margin-bottom: 20px;
+}
+.click{
+  color: green;
+  font: bold;
+}
+.bc{
+  text-align: start;
+}
