@@ -4,9 +4,11 @@ import styles from './Login.module.css'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
 import { IoMdMail } from "react-icons/io";
-import { MdArrowBackIos } from "react-icons/md";
+import { MdArrowBackIos } from "react-icons/md"
+import { useSelector } from "react-redux";
 
 export const Login: React.FC<LoginFormProps> = ({ onAddLink, onView }) => {
+  const logins = useSelector((state)=> state.logins)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
