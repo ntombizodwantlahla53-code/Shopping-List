@@ -1,6 +1,6 @@
 .button {
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -12,11 +12,11 @@
  margin: 8px;
 }
 .button:hover{
-  background-color: lightseagreen;
+  background-color: rgb(247, 107, 130);
 }
 
 .inputting {
-  background-color: #007bff;
+  background-color: rgb(255, 52, 85);
   color: white;
   width: 100%;
   justify-content: center;
