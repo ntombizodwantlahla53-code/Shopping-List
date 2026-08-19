@@ -49,7 +49,7 @@ export const Register = () => {
             icon={<IoIosAddCircle />}
             variant="inputting"/>
             <p className={styles.text}>Already have an account? <p/></p>
-            <Link to= "/">Sign In Here</Link>
+            <Link to= "/login">Sign In Here</Link>
             
             {/* <Buttons label="View Links"
             icon={<CiSaveDown2 />}
