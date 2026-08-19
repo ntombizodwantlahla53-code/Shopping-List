@@ -23,7 +23,8 @@ export const Login: React.FC = () => {
 
   return (
     <div className={styles.linkContainer}>
-<div className={styles.bc}> <MdArrowBackIos/> </div>
+      <Link to = "/"><div className={styles.bc}> <MdArrowBackIos/> </div></Link>
+
       <div className={styles.Topic}>
         <h1 className={styles.Mytitle}> Log in </h1>
         <p className={styles.Myp}>Enter you email and password to securely access your account.</p>
@@ -40,17 +41,13 @@ export const Login: React.FC = () => {
               <input className={styles.inputdesc} placeholder="Password" />
             </div>
             <p className={styles.password}>Forgot Password</p>
-            <Buttons type="submit"
+            <Link to="/home"><Buttons type="submit"
             label ="Log in"
             icon={<IoIosAddCircle />}
-            variant="inputting"/>
+            variant="inputting"/></Link>
+            
             <p className={styles.text}>Don't have an account? <p/></p>
             <Link to="/register">Sign Up</Link>
-            
-            <Buttons label="Sign Up"
-            icon={<IoIosAddCircle />}
-            
-            variant="inputting"/>
           </div>
         </div>
       </form>
