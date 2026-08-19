@@ -12,8 +12,8 @@ export const Home = () => {
     <h1 className={style.hometitle}>Shopping List</h1>
     <div className={style.icon}><FaBasketShopping /></div>
     <div className={style.text}>
-    <span >Your List is Empty</span>
-    <span >create/add list to your trolley for an<br/> easier shopping experience</span>
+    <h2 className={style.list}>Your List is Empty<br/></h2>
+    <p>create/add list to your trolley for an<br/> easier shopping experience</p>
     </div>
     <Buttons type="submit"
     label ="Add List"
