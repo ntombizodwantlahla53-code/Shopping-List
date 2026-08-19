@@ -1,5 +1,5 @@
 .linkContainer{
-    background-color: rgb(234, 226, 226);
+    background-color: rgb(177, 175, 175);
     border: solid black;
     border-radius: 24px;
     width: 95vw;
@@ -87,18 +87,18 @@ label{
   background-color: rgb(65, 242, 255);
   color: black;
 }
-
-.password{
-  justify-content: flex-end;
-  align-items: flex-end;
-  text-align: end;
-  color: #111620;
-  margin-bottom: 20px;
+.Myp{
+  color: black;
+  margin-top: -20px;
 }
+  
 .click{
   color: green;
   font: bold;
 }
 .bc{
   text-align: start;
+}
+.text{
+  color: black;
 }
