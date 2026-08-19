@@ -1,5 +1,5 @@
 .linkContainer{
-    background-color: rgb(234, 226, 226);
+    background-color: rgb(177, 175, 175);
     border: solid black;
     border-radius: 24px;
     width: 95vw;
@@ -25,6 +25,8 @@
 .Myp{
   margin-bottom: 40px;
 margin-top: 30px;
+color: black;
+margin-top: -20px;
  
 }
 
@@ -93,6 +95,7 @@ label{
   text-align: end;
   color: #111620;
   margin-bottom: 20px;
+  color: purple;
 }
 .click{
   color: green;
@@ -100,4 +103,7 @@ label{
 }
 .bc{
   text-align: start;
+}
+.text{
+  color: black;
 }
