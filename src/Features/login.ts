@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface LoginProps {
-  name: string;
+  email: string;
   password: string;
 }
 const initialState: LoginProps = {
-  name: "",
+  email: "ncumoluhlentlahla03@gmail.com",
   password: "",
 };
 
@@ -15,7 +15,7 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<LoginProps>) => {
-      state.name = action.payload.name;
+      state.email = action.payload.email;
       state.password = action.payload.password;
     },
   },

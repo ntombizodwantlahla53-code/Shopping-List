@@ -1,35 +1,27 @@
 import './App.css'
 import { Login } from './Pages/Login/Login'
-import type { LoginTypes } from './LoginType';
 import React, { useState, useEffect } from "react";
 import { Register } from './Pages/Register/Register'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Landing } from './Pages/Landing/Landing';
+import { Landingpage } from './Pages/Landingpage/Landingpage';
+
 
 function App() {
   const [count, setCount] = useState(0)
-  const [links, setLinks] = useState<LoginTypes[]>([]);
-const [showList, setShowList] = useState(false);
-
-const addLink = (link: LoginTypes) => {
-    setLinks((prevLinks) =>{
-      const updatedLinks = [...prevLinks,link]
-      localStorage.setItem('links',JSON.stringify(updatedLinks))
-      return updatedLinks
-    });
-    setShowList(true);
-  };
+ 
   return (
-
     <>
-    <div>
-      {showList ? (
-      <Register onAddLink ={() => setShowList(false)} 
-      />
-        ) : (
-        <Login onAddLink= {() => setShowList(false)} 
-        onView={() => setShowList(true)} />
-        )}
+    <Router>
+      <Routes>
+        <Route path = "/" element={<Login/>}/>
+        <Route path = "/register" element={<Register/>}/>
+        <Route path = "/register" element={<Landing/>}/>
+        <Route path = "/register" element={<Landingpage/>}/>
+        </Routes></Router>  
+    
+    
 
-        </div>
     </>
   )
 }

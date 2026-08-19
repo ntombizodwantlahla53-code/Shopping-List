@@ -6,39 +6,20 @@ import { Buttons } from "../../components/Buttons/Button";
 import { IoMdMail } from "react-icons/io";
 import { MdArrowBackIos } from "react-icons/md"
 import { useSelector } from "react-redux";
+import type { RootState } from "../../Redux/store";
+import { Link } from "react-router-dom";
 
-export const Login: React.FC<LoginFormProps> = ({ onAddLink, onView }) => {
-  const logins = useSelector((state)=> state.logins)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
+
+export const Login: React.FC = () => {
+  const email = useSelector((state:RootState) => state.logins.email)
+  console.log(email)
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const Email = email.trim();
-    const Password = password.trim();
-    
+  
+  }
 
-    if (!Email) {
-      alert("Email cannot be empty.Plz Enter Email");
-      return;
-    }
-    if (!Email) {
-      alert("Name must contain text only.");
-      return;
-    }
-    if (!Password) {
-      alert("Password cannot be empty.Enter password please!");
-      return;
-    }
-    
-    onAddLink({ id: Date.now(), email: Email, password: Password});
-
-    setEmail(""); 
-    setPassword(""); 
-    
-  };
 
   return (
     <div className={styles.linkContainer}>
@@ -52,21 +33,23 @@ export const Login: React.FC<LoginFormProps> = ({ onAddLink, onView }) => {
           <div className={styles.linkss}>
             <div className={styles.title}>
               <label></label>
-              <input className={styles.inputtitle} value={email}  onChange={e => setEmail(e.target.value)} placeholder="Email Address" />
+              <input className={styles.inputtitle}  placeholder="Email Address" />
             </div>
             <div className={styles.desc}>
               <label></label>
-              <input className={styles.inputdesc} value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
+              <input className={styles.inputdesc} placeholder="Password" />
             </div>
             <p className={styles.password}>Forgot Password</p>
             <Buttons type="submit"
             label ="Log in"
             icon={<IoIosAddCircle />}
             variant="inputting"/>
-            <p className={styles.text}>Don't have an account? <p/></p><p className={styles.click}>Sign Up</p>
+            <p className={styles.text}>Don't have an account? <p/></p>
+            <Link to="/register">Sign Up</Link>
+            
             <Buttons label="Sign Up"
             icon={<IoIosAddCircle />}
-            onClick={onView}
+            
             variant="inputting"/>
           </div>
         </div>
