@@ -1,4 +1,3 @@
-
 import { Text } from '../../components/Text/Text'
 import style from './FirstLanding.module.css'
 import { CiShop } from "react-icons/ci";

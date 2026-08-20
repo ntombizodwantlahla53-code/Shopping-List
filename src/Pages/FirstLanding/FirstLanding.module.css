@@ -7,9 +7,10 @@
 }
 .skip{
     text-align: end;
+    color:black;
 }
 .skip:hover{
-    color: deeppink;
+    color: black;
 }
 .landing{
     background-color: rgb(177, 175, 175);
