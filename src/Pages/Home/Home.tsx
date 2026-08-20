@@ -1,11 +1,15 @@
-import React from 'react'
 import { Navbar } from '../../components/Navbar/Navbar'
 import { FaBasketShopping } from "react-icons/fa6";
 import style from './Home.module.css'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from '../../components/Buttons/Button';
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../Redux/store";
 
 export const Home = () => {
+  const dispatch = useDispatch()
+  const list = useSelector((state: RootState) => state.home)
+  console.log(list)
   return (
     <div className={style.home} >
     <Navbar/>
