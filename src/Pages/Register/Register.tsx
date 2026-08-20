@@ -1,15 +1,13 @@
-import { useState } from "react";
 import styles from './Register.module.css'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
-import { IoMdMail } from "react-icons/io";
-import { MdArrowBackIos } from "react-icons/md";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../Redux/store";
 import { Link } from "react-router-dom";
 
 export const Register = () => {
-
+const info = useSelector((state: RootState) => state.register)
+  console.log(info)
 
   return (
     <div className={styles.linkContainer}>
