@@ -1,6 +1,5 @@
 import './App.css'
 import { Login } from './Pages/Login/Login'
-import React, { useState, useEffect } from "react";
 import { Register } from './Pages/Register/Register'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FirstLanding } from './Pages/FirstLanding/FirstLanding';
@@ -11,7 +10,7 @@ import { Profile } from './Pages/Profile/Profile';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
  
   return (
     <>
