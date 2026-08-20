@@ -6,24 +6,36 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../Redux/store";
 import { login } from "../../components/Features/login"
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { fetchLogins } from '../../components/Features/login';
+import type{ AppDispatch } from '../../Redux/store';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const Login = () => {
 const lss = useSelector((state: RootState) => state.login)
   console.log(lss)
-
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(
-      login({
-        lss:[]
+    dispatch(fetchLogins({
+        email,
+        password,
       })
     )
-  
+  .unwrap()
+      .then(() => {
+        navigate("/home");
+      })
+      .catch(() => {
+      });
   }
 
   return (
@@ -39,18 +51,22 @@ const lss = useSelector((state: RootState) => state.login)
           <div className={styles.linkss}>
             <div className={styles.title}>
               <label></label>
-              <input className={styles.inputtitle}  placeholder="Email Address" />
+              <input className={styles.inputtitle} value={email} type="email"
+        onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
             </div>
             <div className={styles.desc}>
               <label></label>
-              <input className={styles.inputdesc} placeholder="Password" />
+              <input className={styles.inputdesc}  value={password} type="password"
+        onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             </div>
             <p className={styles.password}>Forgot Password</p>
-            <Link to="/home"><Buttons type="submit"
-            label ="Log in"
-            icon={<IoIosAddCircle />}
-            variant="inputting"/></Link>
-            
+              <Buttons
+              type="submit"
+              label="Log in"
+              icon={<IoIosAddCircle />}
+              variant="inputting"/>
+        {lss.error && <p style={{ color: "red" }}>{lss.error}</p>}
+
             <p className={styles.text}>Don't have an account? <p/></p>
             <Link to="/register">Sign Up</Link>
           </div>

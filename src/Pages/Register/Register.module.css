@@ -50,7 +50,7 @@ label{
   box-sizing: border-box;
 }
 .inputtitle{
-  color: #ffffff;
+  color: #a00e0e;
   background-color: white;
   box-sizing: border-box;
   font: bolder;
@@ -68,7 +68,7 @@ label{
   
 }
 .inputdesc{
-  color: #ffffff;
+  color: #b70707;
   background-color: white;
   font: bold;
   width: 100%;
