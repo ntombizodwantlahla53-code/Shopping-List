@@ -1,25 +1,30 @@
-import { useState } from "react";
-import type { LoginFormProps } from "../../LoginType";
 import styles from './Login.module.css'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
-import { IoMdMail } from "react-icons/io";
 import { MdArrowBackIos } from "react-icons/md"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../Redux/store";
+import { login } from "../../components/Features/login"
 import { Link } from "react-router-dom";
 
 
-export const Login: React.FC = () => {
-  const email = useSelector((state:RootState) => state.logins.email)
-  console.log(email)
+
+export const Login = () => {
+const lss = useSelector((state: RootState) => state.login)
+  console.log(lss)
+
+  const dispatch = useDispatch();
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    dispatch(
+      login({
+        lss:[]
+      })
+    )
   
   }
-
 
   return (
     <div className={styles.linkContainer}>
