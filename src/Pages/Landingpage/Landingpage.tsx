@@ -1,14 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import { Text } from '../../components/Text/Text'
 import style from './Landingpage.module.css'
 import { CiShop } from "react-icons/ci";
 import { Buttons } from '../../components/Buttons/Button';
+import { MdArrowBackIos } from "react-icons/md"
 
 export const Landingpage = () => {
   return (
     <div className={style.land}>
-      
+      <Link to = "/"><div className={style.bc}> <MdArrowBackIos/> </div></Link>
         <div className={style.headingg}>
             <h1 className={style.heading}>S-list </h1>
             <div className={style.icon}><CiShop/></div>
