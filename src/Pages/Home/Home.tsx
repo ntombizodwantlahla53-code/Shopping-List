@@ -5,11 +5,10 @@ import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from '../../components/Buttons/Button';
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../Redux/store";
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
-  const dispatch = useDispatch()
-  const list = useSelector((state: RootState) => state.home)
-  console.log(list)
+  
   return (
     <div className={style.home} >
     <Navbar/>
@@ -19,10 +18,10 @@ export const Home = () => {
     <h2 className={style.list}>Your List is Empty<br/></h2>
     <p>create/add list to your trolley for an<br/> easier shopping experience</p>
     </div>
-    <Buttons type="submit"
+    <Link to="/main"><Buttons type="submit"
     label ="Add List"
     icon={<IoIosAddCircle />}
-    variant="inputting"/>
+    variant="inputting"/></Link>
     </div>
     
   )

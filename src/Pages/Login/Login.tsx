@@ -4,7 +4,6 @@ import { Buttons } from "../../components/Buttons/Button";
 import { MdArrowBackIos } from "react-icons/md"
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../Redux/store";
-import { login } from "../../components/Features/login"
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { fetchLogins } from '../../components/Features/login';
@@ -65,7 +64,7 @@ const lss = useSelector((state: RootState) => state.login)
               label="Log in"
               icon={<IoIosAddCircle />}
               variant="inputting"/>
-        {lss.error && <p style={{ color: "red" }}>{lss.error}</p>}
+        {lss.error && <p >{lss.error}</p>}
 
             <p className={styles.text}>Don't have an account? <p/></p>
             <Link to="/register">Sign Up</Link>

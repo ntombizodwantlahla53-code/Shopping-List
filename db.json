@@ -8,5 +8,6 @@
       "id": "EzLsO43Iabc"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "main": []
+
 }
