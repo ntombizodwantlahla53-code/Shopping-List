@@ -6,8 +6,68 @@
       "email": "123f@gmail.com",
       "password": "12345",
       "id": "EzLsO43Iabc"
+    },
+    {
+      "name": "hjbk,",
+      "surname": "hjbjkm",
+      "cellNumber": "hjbnjm",
+      "email": "123f@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "9wGTCRFcpcY"
+    },
+    {
+      "name": "hjbk,",
+      "surname": "hjbjkm",
+      "cellNumber": "hjbnjm",
+      "email": "123f@gmail.co",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "ixffu9Bx45Y"
+    },
+    {
+      "name": "123",
+      "surname": "45",
+      "cellNumber": "678",
+      "email": "1235",
+      "password": "1235",
+      "confirmPassword": "1235",
+      "id": "ur85K95v-qc"
+    },
+    {
+      "name": "123",
+      "surname": "45",
+      "cellNumber": "678",
+      "email": "zee1@gmail.com",
+      "password": "1235",
+      "confirmPassword": "1235",
+      "id": "A-juJ1wLA90"
+    },
+    {
+      "name": "",
+      "surname": "",
+      "cellNumber": "",
+      "email": "123f@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": "razHYU7XpjI"
     }
   ],
-  "main": []
-
+  "main": [
+    {
+      "catergory": "oww",
+      "name": "dd",
+      "note": "ww",
+      "quantity": "dd",
+      "id": "m3Fhy29s-5E"
+    },
+    {
+      "catergory": "bjhn",
+      "name": "jbh",
+      "note": "hb",
+      "quantity": "ygbh",
+      "id": "87yw5C5y0ng"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
