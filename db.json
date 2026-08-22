@@ -67,6 +67,13 @@
       "note": "hb",
       "quantity": "ygbh",
       "id": "87yw5C5y0ng"
+    },
+    {
+      "catergory": "qweer",
+      "name": "qwwrr",
+      "note": "qwwertr",
+      "quantity": "qwety",
+      "id": "PoMH3cnTGCc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

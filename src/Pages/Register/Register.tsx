@@ -4,11 +4,10 @@ import { Buttons } from "../../components/Buttons/Button";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
 import { Link } from "react-router-dom";
-import {fetchRegs,updateRegister,} from "../../components/Features/register";
+import {fetchRegs,updateRegister} from "../../components/Features/register";
 
 export const Register = () => {
-  const info = useSelector(
-    (state: RootState) => state.register.info
+  const info = useSelector((state: RootState) => state.register.info
   );
   const dispatch = useDispatch<AppDispatch>();
 

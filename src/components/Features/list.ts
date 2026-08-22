@@ -6,16 +6,27 @@ export interface Main {
     name: string;
  note: string;
   quantity: string;
+
 }
+
 interface  Mainee{
-   details :Main[];
+   details :{
+    catergory: string;
+    name: string;
+ note: string;
+  quantity: string;
+   },
   loading: boolean;
   error: string | null;
  
-
 };
 const initialState: Mainee = {
-  details: [],
+  details: {
+    catergory: "",
+    name: "",
+ note: "",
+  quantity: "",
+  },
   loading: false,
   error: null,
 };
@@ -42,11 +53,11 @@ export const mainSlice = createSlice({
   name: "list",
   initialState,
   reducers: {
-    lists: (state, action: PayloadAction<Mainee>) => {
-        state.details = action.payload.details;
-    
+    lists: (state, action: PayloadAction<Partial<Main>>) => {
+          state.details={...state.details, ...action.payload,};
+        },
     },
-  },
+ 
 extraReducers: (builder) =>{
   builder.addCase(fetchList.pending, (state) =>{
     state.loading = true
