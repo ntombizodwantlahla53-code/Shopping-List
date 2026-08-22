@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Register {
-  name: string;
-  surname: string;
+  name:string;
+  surname:string;
   cellNumber: string;
   email: string;
   password: string;
@@ -15,10 +15,10 @@ interface RegisterState {
   error: string | null;
 }
 const initialState: RegisterState = {
-  info: {
-    name: "",
-    surname: "",
-    cellNumber: "",
+  info:{
+    name:"",
+    surname:"",
+    cellNumber:"",
     email: "",
     password: "",
     confirmPassword:""
@@ -48,23 +48,17 @@ export const registerSlice = createSlice({
   name: "regs",
   initialState,
   reducers: {
-    updateRegister: (
-      state,
-      action: PayloadAction<Partial<Register>>
-    ) => {
-      state.info = {
-        ...state.info,
-        ...action.payload,
-      };
+    updateRegister: (state, action: PayloadAction<Partial<Register>>) => {
+      state.info={...state.info, ...action.payload,};
     },
     clearRegister: (state) => {
     state.info = {
-      name: "",
-      surname: "",
-      cellNumber: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name:"",
+      surname:"",
+      cellNumber:"",
+      email:"",
+      password:"",
+      confirmPassword:"",
     };
   },
   },
