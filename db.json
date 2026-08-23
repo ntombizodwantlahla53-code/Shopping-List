@@ -74,6 +74,13 @@
       "note": "qwwertr",
       "quantity": "qwety",
       "id": "PoMH3cnTGCc"
+    },
+    {
+      "catergory": "rice",
+      "name": "brn",
+      "note": "shoprite",
+      "quantity": "1",
+      "id": "9gZzShxrF34"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
