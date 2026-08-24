@@ -3,8 +3,6 @@ import styles from './Main.module.css'
 import type{ AppDispatch } from '../../Redux/store';
 import { useSelector, useDispatch} from "react-redux";
 import type { RootState } from "../../Redux/store";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 import { fetchList, lists } from './../Features/list'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
@@ -24,8 +22,6 @@ export const Main = () => {
 
   dispatch(fetchList({
       catergory: details.catergory,
-      name:details.name,
-      note:details.note,
       quantity:details.quantity,
     }))
     .unwrap()
@@ -49,16 +45,6 @@ export const Main = () => {
               <input className={styles.inputtitle} placeholder="Catergory" value={details.catergory} 
               onChange={(e) =>dispatch(lists({ catergory: e.target.value }))
               }/>
-            </div>
-            <div className={styles.desc}>
-              <label></label>
-              <input className={styles.inputdesc} placeholder="Name" value={details.name} 
-              onChange={(e) =>dispatch (lists({ name: e.target.value}))} />
-            </div>
-            <div className={styles.desc}>
-              <label></label>
-              <input className={styles.inputdesc} placeholder="Note" value={details.note} 
-              onChange={(e) =>dispatch (lists({ note: e.target.value}))} />
             </div>
             <div className={styles.desc}>
               <label></label>

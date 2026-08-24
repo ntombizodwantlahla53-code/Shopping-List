@@ -3,7 +3,7 @@ import { FaBasketShopping } from "react-icons/fa6";
 import style from './Home.module.css'
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from '../../components/Buttons/Button';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import type { RootState } from "../../Redux/store";
 import { Link } from 'react-router-dom';
 
@@ -23,8 +23,6 @@ export const Home = () => {
     <p>create/add list to your trolley for an<br/> easier shopping experience</p>
     </div>
     <p>Catergory: {details.catergory}</p>
-      <p>Name:{details.name}</p>
-      <p>Note:{details.note}</p>
       <p>Quantity:{details.quantity}</p>
     <Link to="/main"><Buttons type="submit"
     label ="Add List"

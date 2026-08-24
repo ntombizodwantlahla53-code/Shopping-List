@@ -81,6 +81,41 @@
       "note": "shoprite",
       "quantity": "1",
       "id": "9gZzShxrF34"
+    },
+    {
+      "catergory": "dsfgsrg",
+      "name": "grdthgxc",
+      "note": "dryhtfryh",
+      "quantity": "tdrrgyhytrd",
+      "id": "JBxFaFwQ0Nk"
+    },
+    {
+      "catergory": "gfdhnfg",
+      "name": "fhtfyc",
+      "note": "fthcf",
+      "quantity": "hytf",
+      "id": "m7zBhvoGwhg"
+    },
+    {
+      "catergory": "dsfgsrg",
+      "name": "grdthgxc",
+      "note": "dryhtfryh",
+      "quantity": "tdrrgyhytrd",
+      "id": "N4Ls-WxyRw8"
+    },
+    {
+      "catergory": "gfdhnfg",
+      "name": "fhtfyc",
+      "note": "fthcf",
+      "quantity": "hytf",
+      "id": "8ne5Gb5k2bU"
+    },
+    {
+      "catergory": "uho",
+      "name": "uhkio",
+      "note": "huj",
+      "quantity": "hguk",
+      "id": "IvuUWMCuiSE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
