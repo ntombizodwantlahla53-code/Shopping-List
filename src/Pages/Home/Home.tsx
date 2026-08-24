@@ -31,14 +31,25 @@ export const Home = () => {
     </>
     ) : (
       <>
+      <div className={style.new}>
       <h1 className={style.hometitle2}>Shopping List</h1>
       <div className={style.button}>
     <Link to="/main"><Buttons type="submit"
     label ="Add List"
     icon={<IoIosAddCircle />}
-    variant="inputting"/></Link></div>
+    variant="inputting"/></Link></div></div>
     <div className={style.cater}>
-    <p className={style.name}>Catergory: {details.catergory}</p></div>
+      {links.map((link, index) => (
+        <div key={index} className={style.yea}>
+        <p key={index} className={style.name}>{link.catergory}
+        </p>
+        <div className={style.btn}><Buttons
+        type="button"
+        label="View"
+        icon={<IoIosAddCircle />}
+        variant="inputting"
+      /></div></div>
+      ))}</div>
     </>
     )}
     </div>
