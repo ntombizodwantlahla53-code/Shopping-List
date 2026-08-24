@@ -22,8 +22,9 @@ export const Home = () => {
     <h2 className={style.list}>Your List is Empty<br/></h2>
     <p>create/add list to your trolley for an<br/> easier shopping experience</p>
     </div>
-    <p>Catergory: {details.catergory}</p>
-      <p>Quantity:{details.quantity}</p>
+    <div className={style.cater}>
+    <p className={style.name}>Catergory: {details.catergory}</p>
+      </div>
     <Link to="/main"><Buttons type="submit"
     label ="Add List"
     icon={<IoIosAddCircle />}
