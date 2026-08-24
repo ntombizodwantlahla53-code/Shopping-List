@@ -13,7 +13,7 @@
     color: black;
 }
 .landing{
-    background-color: rgb(177, 175, 175);
+    background-color: rgb(224, 222, 222);
     border: solid black;
     border-radius: 24px;
     width: 95vw;
@@ -28,6 +28,6 @@
 }
 .paragraph{
     margin-bottom: 20px;
-    color: white;
+    color: rgb(116, 101, 101);
    
 }
