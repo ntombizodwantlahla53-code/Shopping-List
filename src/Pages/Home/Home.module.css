@@ -4,7 +4,7 @@
     margin-bottom: 50px;
 }
 .home{
-    background-color: rgb(177, 175, 175);
+    background-color: rgb(224, 222, 222);
     border: solid black;
     border-radius: 24px;
     width: 95vw;
@@ -18,9 +18,19 @@
     color: rgb(114, 114, 114);
 }
 .text{
-    color: white;
+    color: rgb(116, 101, 101);
     margin-bottom: 50px;
 }
 .list{
     color: rgb(255, 52, 85);
+}
+.cater{
+    background-color:rgb(255, 52, 85);
+    border: solid black;
+    text-align: start;
+
+}
+.name{
+    margin:20px;
+    color: white;
 }
