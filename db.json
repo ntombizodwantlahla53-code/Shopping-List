@@ -125,6 +125,46 @@
     {
       "catergory": "dftgkj.hl.",
       "id": "cJFg7yHIGt8"
+    },
+    {
+      "catergory": "flour",
+      "id": "Rgjti_e6pcs"
+    },
+    {
+      "catergory": "flour",
+      "id": "sphZr3e3uxk"
+    },
+    {
+      "catergory": "rices",
+      "id": "UGPuiONRt4I"
+    },
+    {
+      "catergory": "ghy",
+      "id": "ZP26i0fYo-o"
+    },
+    {
+      "catergory": "ghyhhm",
+      "id": "WHqzkid1uBU"
+    },
+    {
+      "catergory": "Grocery",
+      "id": "SdBKUO5M-JA"
+    },
+    {
+      "catergory": "grocery",
+      "id": "sHI5xBT8lMY"
+    },
+    {
+      "catergory": "groceryu",
+      "id": "8elQy_tPOUw"
+    },
+    {
+      "catergory": "nn",
+      "id": "A9Uyw9sj1Zw"
+    },
+    {
+      "catergory": "nnnnn",
+      "id": "ngqNjNNEX34"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
