@@ -10,10 +10,9 @@ interface  Mainee{
    details :{
     catergory: string;
    },
-   links:Main[]
+   links:Main[];
   loading: boolean;
   error: string | null;
- 
 };
 const initialState: Mainee = {
   details: {
@@ -59,6 +58,7 @@ extraReducers: (builder) =>{
   .addCase(fetchList.fulfilled, (state, action) =>{
     state.loading= false
     state.details = action.payload;
+    state.links.push(action.payload);
 })
   .addCase(fetchList.rejected, (state, action) =>{
     state.loading= false

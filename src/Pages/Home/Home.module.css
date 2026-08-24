@@ -16,6 +16,12 @@
 }
 .hometitle{
     color: rgb(114, 114, 114);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.hometitle2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(114, 114, 114);
+    text-align: start;
 }
 .text{
     color: rgb(116, 101, 101);
@@ -33,4 +39,10 @@
 .name{
     margin:20px;
     color: white;
+}
+.button{
+  
+    margin-top:50px;
+    width: 150px;
+    height: 60px;
 }
