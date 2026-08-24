@@ -22,7 +22,6 @@ export const Main = () => {
 
   dispatch(fetchList({
       catergory: details.catergory,
-      quantity:details.quantity,
     }))
     .unwrap()
       .then(() => {
@@ -44,12 +43,6 @@ export const Main = () => {
               <label></label>
               <input className={styles.inputtitle} placeholder="Catergory" value={details.catergory} 
               onChange={(e) =>dispatch(lists({ catergory: e.target.value }))
-              }/>
-            </div>
-            <div className={styles.desc}>
-              <label></label>
-              <input className={styles.inputdesc} placeholder="Quantity" value={details.quantity} 
-              onChange={(e) =>dispatch(lists({ quantity: e.target.value }))
               }/>
             </div>
             <div className={styles.desc}>
