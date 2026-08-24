@@ -3,14 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Main {
     catergory: string;
-  quantity: string;
 
 }
 
 interface  Mainee{
    details :{
     catergory: string;
-  quantity: string;
    },
    links:Main[]
   loading: boolean;
@@ -20,7 +18,6 @@ interface  Mainee{
 const initialState: Mainee = {
   details: {
     catergory: "",
-  quantity: "",
   },
   links:[],
   loading: false,
