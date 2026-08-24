@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "name": "zodwa",
-      "surname": "ntlahla",
-      "email": "123f@gmail.com",
-      "password": "12345",
-      "id": "EzLsO43Iabc"
-    },
-    {
       "name": "hjbk,",
       "surname": "hjbjkm",
       "cellNumber": "hjbnjm",
@@ -116,6 +109,10 @@
       "note": "huj",
       "quantity": "hguk",
       "id": "IvuUWMCuiSE"
+    },
+    {
+      "catergory": "",
+      "id": "_qGFDKFtaPw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
