@@ -1,21 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface Main {
+export interface Item {
     catergory: string;
 
 }
 
 interface  Mainee{
-   details :{
+   inputs :{
     catergory: string;
    },
-   links:Main[];
+   links:Item[];
   loading: boolean;
   error: string | null;
 };
 const initialState: Mainee = {
-  details: {
+  inputs: {
     catergory: "",
   },
   links:[],
@@ -23,12 +23,12 @@ const initialState: Mainee = {
   error: null,
 };
 
-export const fetchList = createAsyncThunk('list/fetchList', async(main:Main, thunkAPI)=>{
+export const fetchItem = createAsyncThunk('list/fetchList', async(item:Item, thunkAPI)=>{
 try {
   const response = await fetch("http://localhost:3000/main", {
     method: "POST",
     headers: {"Content-Type": "application/json",},
-    body: JSON.stringify(main),
+    body: JSON.stringify(item),
   });
   if (!response.ok) {
     throw new Error("Failed to add items");
@@ -41,30 +41,30 @@ try {
 }
 }
 );
-export const mainSlice = createSlice({
+export const itemSlice = createSlice({
   name: "list",
   initialState,
   reducers: {
     lists: (state, action: PayloadAction<Partial<Main>>) => {
-          state.details={...state.details, ...action.payload,};
+          state.inputs={...state.inputs, ...action.payload,};
         },
     },
  
 extraReducers: (builder) =>{
-  builder.addCase(fetchList.pending, (state) =>{
+  builder.addCase(fetchItem.pending, (state) =>{
     state.loading = true
     state.error = null;
   })
-  .addCase(fetchList.fulfilled, (state, action) =>{
+  .addCase(fetchItem.fulfilled, (state, action) =>{
     state.loading= false
-    state.details = action.payload;
+    state.inputs = action.payload;
     state.links.push(action.payload);
 })
-  .addCase(fetchList.rejected, (state, action) =>{
+  .addCase(fetchItem.rejected, (state, action) =>{
     state.loading= false
     state.error = action.payload as string;
 })
 },
 });
-export const { lists } = mainSlice.actions
-export default mainSlice.reducer
+export const { lists } = itemSlice.actions
+export default itemSlice.reducer
