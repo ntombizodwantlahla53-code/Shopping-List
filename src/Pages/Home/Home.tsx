@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 export const Home = () => {
   const {details, links} = useSelector((state: RootState) => state.main)
     if (!details) {
-      return <p>No userlogged in</p>
     }
   return (
     <div className={style.home} >
@@ -43,12 +42,12 @@ export const Home = () => {
         <div key={index} className={style.yea}>
         <p key={index} className={style.name}>{link.catergory}
         </p>
-        <div className={style.btn}><Buttons
+        <Link to = "/items"><div className={style.btn}><Buttons
         type="button"
         label="View"
         icon={<IoIosAddCircle />}
         variant="inputting"
-      /></div></div>
+      /></div></Link></div>
       ))}</div>
     </>
     )}
