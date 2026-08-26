@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "name": "hjbk,",
-      "surname": "hjbjkm",
-      "cellNumber": "hjbnjm",
+      "name": "ntombi",
+      "surname": "ntlahla",
+      "cellNumber": "0635792017",
       "email": "123f@gmail.com",
       "password": "12345",
       "confirmPassword": "12345",
@@ -167,64 +167,137 @@
       "id": "ngqNjNNEX34"
     },
     {
+      "catergory": "momy",
+      "id": "cCO1iYOZvic"
+    },
+    {
+      "catergory": "momy",
+      "id": "sXpHkKJBaJM"
+    },
+    {
+      "catergory": "groceries",
+      "id": "KYf5yaQiR90"
+    },
+    {
+      "catergory": "party",
+      "id": "yIlOUIu9P5k"
+    },
+    {
+      "catergory": "grocer",
+      "id": "Z0FU5G2kCeU"
+    },
+    {
+      "catergory": "grov",
+      "id": "gU6reDEY-dY"
+    },
+    {
       "catergory": "grocery",
-      "id": "tf-NJbcY5kE"
+      "id": "deBeM4w12X0"
     },
     {
-      "catergory": "ityguht",
-      "id": "E_fvNkJgIgs"
+      "catergory": "party",
+      "id": "JU3FE5MD1RM"
     },
     {
-      "catergory": "gyuh",
-      "id": "UAs0Mb-XpYI"
-    },
-    {
-      "catergory": "gggggg",
-      "id": "Io1ILupNCKk"
-    },
-    {
-      "catergory": "gggg",
-      "id": "bA-ItpPbbbc"
-    },
-    {
-      "catergory": "uykj",
-      "id": "YufsbiZwBus"
-    },
-    {
-      "catergory": "ytu7k",
-      "id": "Hg-dw4AQig4"
-    },
-    {
-      "catergory": "kjjjjjj",
-      "id": "ty05zvtdjWk"
-    },
-    {
-      "catergory": "h",
-      "id": "Wt7sjRXG6ig"
-    },
-    {
-      "catergory": "gggggg",
-      "id": "7bR2ZRLyoqY"
-    },
-    {
-      "catergory": "fg",
-      "id": "Emg1UfZNPiM"
+      "catergory": "grocery",
+      "userId": "9wGTCRFcpcY",
+      "id": "G6XuDQ3PyDo"
     }
   ],
   "items": [
     {
-      "catergory": "e",
-      "category": "fg",
-      "notes": "e",
-      "name": "e",
-      "id": "Pj2NYE3zXC8"
+      "name": "fruit",
+      "category": "momy",
+      "id": "11fDutA_flM"
     },
     {
-      "catergory": "err",
-      "category": "fg",
-      "notes": "eer",
-      "name": "eff",
-      "id": "Bfu7Uf-8G7s"
+      "name": "veg",
+      "category": "momy",
+      "id": "WR6_9xYehJQ"
+    },
+    {
+      "name": "meat",
+      "category": "momy",
+      "id": "-CFknLyycaQ"
+    },
+    {
+      "name": "veg",
+      "category": "groceries",
+      "id": "IA-VpwQsdjc"
+    },
+    {
+      "name": "nnn",
+      "category": "groceries",
+      "notes": "No notes yet",
+      "id": "MtzX9rm8SCY"
+    },
+    {
+      "name": "nhjjn",
+      "category": "party",
+      "notes": "",
+      "id": "Q4TpghenW7U"
+    },
+    {
+      "name": "hjk",
+      "category": "party",
+      "notes": "",
+      "id": "dXDQvtNJ61I"
+    },
+    {
+      "name": "meat",
+      "category": "grocer",
+      "notes": "sh",
+      "id": "ds66pLiZzzQ"
+    },
+    {
+      "name": "guybhij",
+      "category": "grocer",
+      "notes": "shh",
+      "id": "uxzJroQ6ViE"
+    },
+    {
+      "name": "meat",
+      "category": "grocer",
+      "notes": "jn",
+      "id": "eBxfX-Dj1cY"
+    },
+    {
+      "name": "alc",
+      "category": "grov",
+      "notes": "shh",
+      "id": "sZe6GIk7s-8"
+    },
+    {
+      "name": "rdtguh",
+      "category": "grov",
+      "notes": "No notes yet",
+      "id": "j8JamUmvIm4"
+    },
+    {
+      "name": "gvbhj",
+      "category": "grov",
+      "notes": "jbhknk",
+      "id": "E-CAEfK05jA"
+    },
+    {
+      "catergory": "gh",
+      "category": "grov",
+      "notes": "gvbhj",
+      "id": "ka2D8UuBljk"
+    },
+    {
+      "catergory": "fruits",
+      "category": "grocery",
+      "notes": "shoprite",
+      "name": "banana",
+      "id": "LfdETym8lhc"
+    },
+    {
+      "catergory": "veg",
+      "category": "grocery",
+      "notes": "shh",
+      "name": "onion",
+      "id": "LF_R8lTzJ3w"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
