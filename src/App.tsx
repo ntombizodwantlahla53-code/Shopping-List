@@ -7,7 +7,7 @@ import { Landingpage } from './Pages/Landingpage/Landingpage';
 import { Home } from './Pages/Home/Home';
 import { Main } from './components/Main/Main';
 import { Profile } from './Pages/Profile/Profile';
-
+import { Item } from './components/Item/Item';
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path = "/login" element={<Login/>}/>
         <Route path = "/register" element={<Register/>}/>
         <Route path = "/profile" element={<Profile/>}/>
-        
+        <Route path="/items/:catergory" element={<Item/>}/>
         </Routes></Router>  
     
     
