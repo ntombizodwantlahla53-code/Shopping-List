@@ -26,7 +26,7 @@ const initialState: Mainee = {
 
 export const fetchList = createAsyncThunk('list/fetchList', async(main:Main, thunkAPI)=>{
 try {
-  const response = await fetch("http://localhost:3000/main", {
+  const response = await fetch(`http://localhost:3000/main`, {
     method: "POST",
     headers: {"Content-Type": "application/json",},
     body: JSON.stringify(main),
@@ -44,7 +44,7 @@ try {
 );
 export const deleteItem = createAsyncThunk('list/deleteItem', async(id:string | number, thunkAPI)=>{
 try {
-  const response = await fetch("http://localhost:3000/main", {
+  const response = await fetch(`http://localhost:3000/main/${id}`, {
     method: "DELETE",
 
   });
@@ -61,7 +61,7 @@ try {
 );
 export const editItem = createAsyncThunk('list/editItem', async(id:string | number, thunkAPI)=>{
 try {
-  const response = await fetch("http://localhost:3000/main", {
+  const response = await fetch(`http://localhost:3000/main`, {
     method: "UPDATE",
 
   });
