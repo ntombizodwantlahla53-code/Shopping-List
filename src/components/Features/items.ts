@@ -2,38 +2,57 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Item {
-    catergory: string;
-
+  id?: number;
+  catergory: string;
+  category: string;
+  notes: string;
+  name: string
 }
-
-interface  Mainee{
-   inputs :{
-    catergory: string;
-   },
-   links:Item[];
+interface ItemsState {
+  items: Item[];
+  inputCatergory: string;
+  inputNotes: string;
+  inputName: string;
+  openIndex: number | null;
   loading: boolean;
   error: string | null;
-};
-const initialState: Mainee = {
-  inputs: {
-    catergory: "",
-  },
-  links:[],
+  links:Item[];
+}
+const initialState: ItemsState = {
+  items: [],
+  inputCatergory: "",
+  inputName: "",
+  inputNotes: "",
+  openIndex: null,
   loading: false,
   error: null,
+  links:[],
 };
-
-export const fetchItem = createAsyncThunk('list/fetchList', async(item:Item, thunkAPI)=>{
+export const fetchItem = createAsyncThunk("items/fetchItem", async (item: Item, thunkAPI) => {
 try {
-  const response = await fetch("http://localhost:3000/main", {
+  const response = await fetch("http://localhost:3000/items", {
     method: "POST",
-    headers: {"Content-Type": "application/json",},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(item),
   });
-  if (!response.ok) {
-    throw new Error("Failed to add items");
-  }
+  if (!response.ok) throw new Error("Failed to add item");
   return await response.json();
+} catch (error) {
+  return thunkAPI.rejectWithValue(
+    error instanceof Error ? error.message : "Something went wrong"
+  );
+}}
+);
+export const deleteItem = createAsyncThunk('list/deleteItem', async(id:string | number, thunkAPI)=>{
+try {
+  const response = await fetch(`http://localhost:3000/items/${id}`, {
+    method: "DELETE",
+
+  });
+  if (!response.ok) {
+    throw new Error("Failed todELETE");
+  }
+  return id;
 } catch (error) {
   return thunkAPI.rejectWithValue(
     error instanceof Error ? error.message : "Something went wrong"
@@ -41,30 +60,62 @@ try {
 }
 }
 );
-export const itemSlice = createSlice({
-  name: "list",
+export const itemsSlice = createSlice({
+  name: "items",
   initialState,
   reducers: {
-    lists: (state, action: PayloadAction<Partial<Main>>) => {
-          state.inputs={...state.inputs, ...action.payload,};
-        },
+    setItemCatergory: (state, action: PayloadAction<string>) => {
+      state.inputCatergory = action.payload;
     },
- 
-extraReducers: (builder) =>{
-  builder.addCase(fetchItem.pending, (state) =>{
-    state.loading = true
-    state.error = null;
-  })
-  .addCase(fetchItem.fulfilled, (state, action) =>{
-    state.loading= false
-    state.inputs = action.payload;
-    state.links.push(action.payload);
-})
-  .addCase(fetchItem.rejected, (state, action) =>{
-    state.loading= false
-    state.error = action.payload as string;
-})
-},
+    setItemNotes: (state, action: PayloadAction<string>) => {
+      state.inputNotes = action.payload;
+    },
+    setItemName: (state, action: PayloadAction<string>) => {
+      state.inputName = action.payload;
+    },
+    toggleDropdown: (state, action: PayloadAction<number | null>) => {
+      state.openIndex = action.payload;
+    },
+    addItemLocal: (state, action: PayloadAction<Item>) => {
+      state.items.push(action.payload);
+      state.inputCatergory = "";
+      state.inputNotes = "";
+      state.inputName = "";
+    },
+     deletelist: (state, action: PayloadAction<string | number>) => {
+          state.links= state.links.filter((item) =>item.id!==action.payload);
+        },
+  },
+  extraReducers: (builder) => {
+    builder
+    .addCase(fetchItem.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    })
+    .addCase(fetchItem.fulfilled, (state, action) => {
+      state.loading = false;
+      state.items.push(action.payload);
+      state.inputCatergory = "";
+      state.inputNotes = "";
+      state.inputName = "";
+    })
+    .addCase(fetchItem.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload as string;
+    });
+    builder.addCase(deleteItem.pending, (state) =>{
+        state.loading = true
+        state.error = null;
+      })
+      .addCase(deleteItem.fulfilled, (state, action) =>{
+        state.loading= false
+        state.links= state.links.filter((item) =>item.id!==action.payload);
+    })
+      .addCase(deleteItem.rejected, (state, action) =>{
+        state.loading= false
+        state.error = action.payload as string;
+    })
+  },
 });
-export const { lists } = itemSlice.actions
-export default itemSlice.reducer
+export const { setItemCatergory, setItemNotes, setItemName ,toggleDropdown, addItemLocal, deletelist } = itemsSlice.actions;
+export default itemsSlice.reducer;
