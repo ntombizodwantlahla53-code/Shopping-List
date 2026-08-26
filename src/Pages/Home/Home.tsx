@@ -6,7 +6,7 @@ import { Buttons } from '../../components/Buttons/Button';
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../Redux/store";
 import { Link } from 'react-router-dom';
-import { deletelist, deleteItem } from '../../components/Features/list';
+import { deletelist, deleteItem, editItem,  type Main } from '../../components/Features/list';
 import type{ AppDispatch } from '../../Redux/store';
 
 
@@ -50,18 +50,18 @@ export const Home = () => {
         <div key={index} className={style.yea}>
         <p key={index} className={style.name}>{link.catergory}
         </p>
-        <Link to = "/items"><div className={style.btn}><Buttons
-        type="button"
-        label="View"
-        icon={<IoIosAddCircle />}
-        variant="inputting"
-      /></div></Link>
       <div className={style.bbtn} onClick ={() =>handleDelete(link.id)}>
        <Buttons
         type="button"
         label="Delete"
         icon={<IoIosAddCircle />}
-        variant="inputting"/> </div></div>
+        variant="inputting"/> </div>
+        <Link to = {`/items/${link.catergory}`}>
+        <div className={style.btn}><Buttons type="button"
+        label="View"
+        icon={<IoIosAddCircle />}
+        variant="inputting"/></div></Link>
+        </div>
       ))}</div>
     </>
     )}
