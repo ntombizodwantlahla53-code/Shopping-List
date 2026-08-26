@@ -6,12 +6,20 @@ import { Buttons } from '../../components/Buttons/Button';
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../Redux/store";
 import { Link } from 'react-router-dom';
+import { deletelist, deleteItem } from '../../components/Features/list';
+import type{ AppDispatch } from '../../Redux/store';
 
 
 export const Home = () => {
   const {details, links} = useSelector((state: RootState) => state.main)
-    if (!details) {
-    }
+    if (!details) {}
+     const dispatch = useDispatch<AppDispatch>();
+
+     const handleDelete =(id?:string) =>{
+      if(!id) return;
+      dispatch(deleteItem(id));
+     }
+    
   return (
     <div className={style.home} >
     <Navbar/>
@@ -47,7 +55,13 @@ export const Home = () => {
         label="View"
         icon={<IoIosAddCircle />}
         variant="inputting"
-      /></div></Link></div>
+      /></div></Link>
+      <div className={style.bbtn} onClick ={() =>handleDelete(link.id)}>
+       <Buttons
+        type="button"
+        label="Delete"
+        icon={<IoIosAddCircle />}
+        variant="inputting"/> </div></div>
       ))}</div>
     </>
     )}
