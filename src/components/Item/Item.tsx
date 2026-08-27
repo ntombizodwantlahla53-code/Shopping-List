@@ -22,8 +22,8 @@ export const Item = () => {
   };
   return (
     <div>
-<Link to = "/home"><div className={style.bc}> <MdArrowBackIos/> </div></Link>
-      <h1>iiItems ze.. {catergory}</h1>
+      <Link to = "/home"><div className={style.bc}> <MdArrowBackIos/> </div></Link>
+      <h1>{catergory} Items</h1>
       <div className={style.itemsContainer}>
         {items
           .filter((i) =>i.category === catergory)
@@ -57,11 +57,13 @@ export const Item = () => {
           value={inputName}
           onChange={(e) => dispatch(setItemName(e.target.value))}
           placeholder="name"/>
-        <Buttons type="button"
+        <div className={style.buttonAdd}>
+          <Buttons type="button"
           label="Add Item"
           icon={<IoIosAddCircle />}
           variant="inputting"
           onClick={handleAddItem}/>
+          </div>
       </div>
     </div>
   );

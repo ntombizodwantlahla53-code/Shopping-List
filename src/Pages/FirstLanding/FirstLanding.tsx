@@ -4,6 +4,7 @@ import { CiShop } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { Buttons } from '../../components/Buttons/Button';
 import { IoIosAddCircle } from "react-icons/io";
+import { FaShopify } from "react-icons/fa6";
 
 export const FirstLanding = () => {
   return (
@@ -11,7 +12,7 @@ export const FirstLanding = () => {
       <div className={style.skip}>
         <Link to = "/login" >Skip</Link>
       </div>
-            <h1 className={style.heading}>S-list </h1>
+            <h1 className={style.heading}><FaShopify/>-list <FaShopify/></h1>
            
             <div className={style.icon}><CiShop/></div>
             <h2 className={style.welcome}>Welcome to S-list</h2>

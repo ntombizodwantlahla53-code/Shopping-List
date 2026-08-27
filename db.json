@@ -44,6 +44,15 @@
       "password": "12345",
       "confirmPassword": "12345",
       "id": "razHYU7XpjI"
+    },
+    {
+      "name": "Sabelo",
+      "surname": "Gumede",
+      "cellNumber": "123456",
+      "email": "sabelo@gmail.com",
+      "password": "00000",
+      "confirmPassword": "00000",
+      "id": "rM5tyvrS52g"
     }
   ],
   "main": [
@@ -202,6 +211,16 @@
       "catergory": "grocery",
       "userId": "9wGTCRFcpcY",
       "id": "G6XuDQ3PyDo"
+    },
+    {
+      "catergory": "Grocery",
+      "userId": "rM5tyvrS52g",
+      "id": "_iMDnFRFrqU"
+    },
+    {
+      "catergory": "tyh",
+      "userId": "rM5tyvrS52g",
+      "id": "AEEMTYJ9aB8"
     }
   ],
   "items": [

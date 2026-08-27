@@ -2,3 +2,20 @@
     margin-top: 5px;
     padding-left: 10px;
 }
+.bc{
+    text-align: start;
+    border: solid black;
+}
+.addForm{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 20px;
+    color: aqua;
+    background-color: bisque;
+}
+.buttonAdd{
+    text-align: center;
+    background-color: blueviolet;
+    color: black;
+}
