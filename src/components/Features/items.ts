@@ -6,7 +6,8 @@ export interface Item {
   catergory: string;
   category: string;
   notes: string;
-  name: string
+  name: string;
+  quantity: string;
 }
 
 interface ItemsState {
@@ -14,6 +15,7 @@ interface ItemsState {
   inputCatergory: string;
   inputNotes: string;
   inputName: string;
+  inputQuantity: string;
   openIndex: number | null;
   loading: boolean;
   error: string | null;
@@ -24,13 +26,14 @@ const initialState: ItemsState = {
   inputCatergory: "",
   inputName: "",
   inputNotes: "",
+  inputQuantity:"",
   openIndex: null,
   loading: false,
   error: null,
 };
 export const fetchItem = createAsyncThunk("items/fetchItem", async (item: Item, thunkAPI) => {
     try {
-      const response = await fetch("http://localhost:3000/items", {
+      const response = await fetch(`http://localhost:3000/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),
@@ -57,6 +60,9 @@ export const itemsSlice = createSlice({
      setItemName: (state, action: PayloadAction<string>) => {
       state.inputName = action.payload;
     },
+     setItemQuantity: (state, action: PayloadAction<string>) => {
+      state.inputQuantity = action.payload;
+     },
     toggleDropdown: (state, action: PayloadAction<number | null>) => {
       state.openIndex = action.payload;
     },
@@ -65,6 +71,7 @@ export const itemsSlice = createSlice({
       state.inputCatergory = "";
       state.inputNotes = "";
       state.inputName = "";
+      state.inputQuantity = "";
     },
   },
   extraReducers: (builder) => {
@@ -79,6 +86,7 @@ export const itemsSlice = createSlice({
         state.inputCatergory = "";
         state.inputNotes = "";
         state.inputName = "";
+        state.inputQuantity = "";
       })
       .addCase(fetchItem.rejected, (state, action) => {
         state.loading = false;
@@ -87,5 +95,5 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setItemCatergory, setItemNotes, setItemName , toggleDropdown, addItemLocal } = itemsSlice.actions;
+export const { setItemCatergory, setItemNotes, setItemName ,setItemQuantity, toggleDropdown, addItemLocal } = itemsSlice.actions;
 export default itemsSlice.reducer;
