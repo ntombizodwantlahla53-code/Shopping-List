@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
-import { fetchItem, setItemCatergory, setItemName, setItemNotes, toggleDropdown } from "../Features/items";
+import { fetchItem, setItemCatergory, setItemName, setItemNotes,setItemQuantity, toggleDropdown } from "../Features/items";
 import { Buttons } from "../../components/Buttons/Button";
 import { IoIosAddCircle } from "react-icons/io";
 import style from "./Item.module.css";
@@ -11,13 +11,13 @@ import { Link } from "react-router-dom";
 export const Item = () => {
   const { catergory } = useParams();
   const dispatch = useDispatch<AppDispatch>();
-  const { items,inputCatergory,inputNotes,inputName ,openIndex } = useSelector(
+  const { items,inputCatergory,inputNotes,inputName, inputQuantity ,openIndex } = useSelector(
     (state: RootState) => state.items
   );
 
   const handleAddItem = () => {
     if (inputCatergory.trim()&&catergory) {
-      dispatch(fetchItem({ catergory: inputCatergory, category: catergory, notes: inputNotes , name: inputName}));
+      dispatch(fetchItem({ catergory: inputCatergory, category: catergory, notes: inputNotes , name: inputName, quantity: inputQuantity}));
     }
   };
   return (
@@ -57,6 +57,10 @@ export const Item = () => {
           value={inputName}
           onChange={(e) => dispatch(setItemName(e.target.value))}
           placeholder="name"/>
+        <input type="text"
+          value={inputQuantity}
+          onChange={(e) => dispatch(setItemQuantity(e.target.value))}
+          placeholder="quantity"/>
         <div className={style.buttonAdd}>
           <Buttons type="button"
           label="Add Item"
