@@ -6,7 +6,7 @@ import {IoIosAddCircle,} from "react-icons/io";
 import {Buttons,} from "../../components/Buttons/Button";
 import {useDispatch,useSelector,} from "react-redux";
 import type {RootState,AppDispatch,} from "../../Redux/store";
-import {deleteItem,fetchLists,} from "../../components/Features/list";
+import {deleteItem,fetchLists,editItem} from "../../components/Features/list";
 import {Link,} from "react-router-dom";
 
 export const Home = () => {
@@ -23,6 +23,22 @@ export const Home = () => {
     if (!id) {return;}
     dispatch(
       deleteItem(id)
+    );
+  };
+  const handleEdit = (id?: number, catergory?: string) => {
+    if (!id) {
+      return;
+    }
+    const newCategory = prompt("enter new cart:", catergory);
+    if (!newCategory || !user?.id) {
+      return;
+    }
+    dispatch(
+      editItem({
+        id,
+        catergory: newCategory,
+        userId: user.id,
+      })
     );
   };
   return (
@@ -70,6 +86,13 @@ export const Home = () => {
                       icon={<IoIosAddCircle />}
                       variant="inputting"/>
                   </div>
+                  <div className={style.bbtn} onClick={() =>handleEdit (link.id)}>
+                    <Buttons type="button"
+                      label="Edit"
+                      icon={<IoIosAddCircle />}
+                      variant="inputting"/>
+                  </div>
+
                   <Link to={`/items/${link.catergory}`}>
                     <div className={style.btn}>
                       <Buttons type="button"
