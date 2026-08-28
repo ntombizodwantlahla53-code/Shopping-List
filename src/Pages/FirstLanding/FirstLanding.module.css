@@ -4,6 +4,7 @@
 }
 .icon{
     font-size: 250px;
+    text-align: center;
 }
 .skip{
     text-align: end;
@@ -25,9 +26,12 @@
 }
 .welcome{
     color: rgb(255, 52, 85);
+    text-align: center;
+    margin-top: -60px;
 }
 .paragraph{
     margin-bottom: 20px;
     color: rgb(116, 101, 101);
+    text-align: center;
    
 }

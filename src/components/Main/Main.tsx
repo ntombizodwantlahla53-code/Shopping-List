@@ -6,6 +6,8 @@ import {fetchList,lists,} from "../../components/Features/list";
 import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
 import { useNavigate } from "react-router-dom";
+import { MdArrowBackIos } from "react-icons/md"
+import { Link } from "react-router-dom";
 
 export const Main = () => {
   const details = useSelector((state: RootState) =>state.main.details);
@@ -34,6 +36,8 @@ export const Main = () => {
   return (
     <div>
       <div className={styles.linkContainer}>
+        
+          <Link to ="/home"><div className={styles.backbutton}><MdArrowBackIos/></div></Link>
         <div className={styles.Topic}>
           <h1 className={styles.Mytitle}>Add list</h1>
         </div>

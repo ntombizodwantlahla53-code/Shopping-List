@@ -46,7 +46,7 @@ export const Home = () => {
           <div className={style.icon}><FaBasketShopping /></div>
           <div className={style.text}>
             <h2 className={style.list}>Your List is Empty<br /></h2>
-            <p>create/add list to your trolley for an<br />easier shopping experience</p>
+            <p className={style.txt}>create/add list to your trolley for an<br />easier shopping experience</p>
           </div>
           <Link to="/main">
             <Buttons type="submit" label="Add List" icon={<IoIosAddCircle />} variant="inputting" />

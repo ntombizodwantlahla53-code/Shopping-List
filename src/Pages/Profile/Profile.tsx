@@ -23,47 +23,47 @@ export const Profile = () => {
           <MdArrowBackIos />
         </div>
       </Link>
-      <h2 className={style.text}>Profile
-      </h2>
+      
       <div className={style.icon}><VscAccount /></div>
       <div className={style.profileContainer}>
         <h1 className={style.title}>
           My Profile</h1>
         {!editing ? (
-          <><p>Name: {user.name}</p>
-            <p>Surname: {user.surname}</p>
-            <p>Cell Number:{" "}{user.cellNumber}</p>
-            <p>Email: {user.email}</p>
-            <button className={style.saveBtn} onClick={() =>dispatch(setEditing(true))}>
+          <div className={style.text}>
+            <p className={style.inputs}>Name: {user.name}</p>
+            <p className={style.inputs}>Surname: {user.surname}</p>
+            <p className={style.inputs}>Cell Number:{" "}{user.cellNumber}</p>
+            <p className={style.inputs}>Email: {user.email}</p>
+            <button className={style.editBTN} onClick={() =>dispatch(setEditing(true))}>
               Edit
             </button>
-          </>
+          </div>
         ) : (
           <>
-            <div>
+            <div className={style.edittingT}>
               <label>Name</label>
-              <input value={user.name}
+              <input className={style.input} value={user.name}
                 onChange={(e) =>dispatch(updateProfile({name:e.target.value,}))
                 }/>
             </div>
-            <div><label>Surname</label>
-              <input value={user.surname}
+            <div className={style.edittingT}><label>Surname</label>
+              <input className={style.input} value={user.surname}
                 onChange={(e) =>dispatch(updateProfile({surname:e.target.value,}))
                 }/>
             </div>
-            <div>
+            <div className={style.edittingT}>
               <label>Cell Number</label>
-              <input value={user.cellNumber}
+              <input className={style.input} value={user.cellNumber}
                 onChange={(e) =>dispatch(updateProfile({cellNumber:e.target.value,}))
                 }/>
             </div>
-            <div><label>Email</label>
-              <input value={user.email}
+            <div className={style.edittingT}><label>Email</label>
+              <input className={style.input} value={user.email}
                 type="email"
                 onChange={(e) =>dispatch(updateProfile({email:e.target.value,}))
                 }/>
             </div>
-            <button className={style.saveBtn}onClick={handleSave} disabled={loading}>
+            <button className={style.saveBTN}onClick={handleSave} disabled={loading}>
               {loading? "Saving...": "Save"}</button>
           </>
         )}
