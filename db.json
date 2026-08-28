@@ -208,7 +208,7 @@
       "id": "JU3FE5MD1RM"
     },
     {
-      "catergory": "grocery",
+      "catergory": "h",
       "userId": "9wGTCRFcpcY",
       "id": "G6XuDQ3PyDo"
     },
@@ -221,6 +221,16 @@
       "catergory": "tyh",
       "userId": "rM5tyvrS52g",
       "id": "AEEMTYJ9aB8"
+    },
+    {
+      "catergory": "n",
+      "userId": "9wGTCRFcpcY",
+      "id": "B5TdsRUwTrE"
+    },
+    {
+      "catergory": "m",
+      "userId": "9wGTCRFcpcY",
+      "id": "SHCbc4U8MhY"
     }
   ],
   "items": [
@@ -317,6 +327,86 @@
       "notes": "shh",
       "name": "onion",
       "id": "LF_R8lTzJ3w"
+    },
+    {
+      "catergory": "b",
+      "category": "new",
+      "notes": "bb",
+      "name": "bbb",
+      "quantity": "bbbb",
+      "id": "KIUNR1yev84"
+    },
+    {
+      "catergory": "b",
+      "category": "h",
+      "notes": "t",
+      "name": "a",
+      "quantity": "1",
+      "id": "40prYL56ONQ"
+    },
+    {
+      "catergory": "see",
+      "category": "h",
+      "notes": "run",
+      "name": "saw",
+      "quantity": "4",
+      "id": "BvXXngoROLA"
+    },
+    {
+      "catergory": "k",
+      "category": "h",
+      "notes": "j",
+      "name": "jjj",
+      "quantity": "j",
+      "id": "NnBhcvbf_n0"
+    },
+    {
+      "catergory": "n",
+      "category": "${link.catergory}",
+      "notes": ",",
+      "name": "n",
+      "quantity": "m",
+      "id": "4kqrmy8XYqo"
+    },
+    {
+      "catergory": "nm",
+      "category": "${link.catergory}",
+      "notes": "nm",
+      "name": "",
+      "quantity": "",
+      "id": "gWrTNyN1Vgc"
+    },
+    {
+      "catergory": "banana",
+      "category": "h",
+      "notes": "shop",
+      "name": "banana",
+      "quantity": "3",
+      "id": "2rlx7pDVSdw"
+    },
+    {
+      "category": "h",
+      "catergory": "kl",
+      "name": "kl",
+      "notes": "kl",
+      "quantity": "m",
+      "id": "2_B7c5yhTA4"
+    },
+    {
+      "category": "h",
+      "catergory": "veg",
+      "name": "v",
+      "quantity": "1",
+      "notes": "s",
+      "id": "e__5FyrGjAc"
+    },
+    {
+      "category": "h",
+      "catergory": "b",
+      "name": "h",
+      "quantity": "2",
+      "notes": "n",
+      "id": "34nM6d0nuyw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

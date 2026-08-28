@@ -65,3 +65,10 @@
     margin: 10px;
     margin-top: 50px;
 }
+.d{
+    display: flex;
+    flex-direction: column;
+}
+.count{
+    margin: 10px;
+}

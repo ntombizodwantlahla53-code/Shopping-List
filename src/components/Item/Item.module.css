@@ -19,3 +19,18 @@
     background-color: blueviolet;
     color: black;
 }
+.nn{
+    background: #f5f5f5;
+     padding: 10px;
+      margin-bottom: 10px;
+}
+.text{
+    display: flex;
+     justify-content: space-between;
+}
+.group{
+    margin-bottom: 20px;
+     border: 1px solid #ddd;
+     padding: 10px;
+     border-radius: 10px; 
+}

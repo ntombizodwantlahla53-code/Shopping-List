@@ -1,73 +1,120 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
-import { fetchItem, setItemCatergory, setItemName, setItemNotes,setItemQuantity, toggleDropdown } from "../Features/items";
+import { fetchItem, fetchItems, deleteItemThunk, editItemThunk, setItemCatergory, setItemName, setItemNotes, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes, setNewQty, clearAddForm } from "../Features/items";
 import { Buttons } from "../../components/Buttons/Button";
 import { IoIosAddCircle } from "react-icons/io";
 import style from "./Item.module.css";
 import { MdArrowBackIos } from "react-icons/md"
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Item = () => {
   const { catergory } = useParams();
   const dispatch = useDispatch<AppDispatch>();
-  const { items,inputCatergory,inputNotes,inputName, inputQuantity ,openIndex } = useSelector(
-    (state: RootState) => state.items
-  );
+  const { items, inputCatergory, inputNotes, inputName, inputQuantity, openIndex, addIndex, newName, newNotes, newQty } = useSelector((state: RootState) => state.items);
 
-  const handleAddItem = () => {
-    if (inputCatergory.trim()&&catergory) {
-      dispatch(fetchItem({ catergory: inputCatergory, category: catergory, notes: inputNotes , name: inputName, quantity: inputQuantity}));
-    }
+  useEffect(() => {
+     dispatch(fetchItems()); 
+    }, [dispatch]);
+  const groceryItems = items.filter((i) => i.category === catergory);
+  const grouped = groceryItems.reduce((acc: any, item) => {
+    const key = item.catergory || "Other";
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {});
+  const handleAddMain = () => {
+    if (!inputName.trim() ||!inputCatergory.trim() ||!catergory) return;
+    dispatch(fetchItem({
+      category: catergory,
+      catergory: inputCatergory,
+      name: inputName,
+      quantity: inputQuantity,
+      notes: inputNotes,
+    }));
+  };
+  const handleAddToGroup = (groupName: string) => {
+    if (!newName.trim() ||!catergory) return;
+    dispatch(fetchItem({
+      category: catergory,
+      catergory: groupName,
+      name: newName,
+      quantity: newQty,
+      notes: newNotes,
+    })).then(() => dispatch(clearAddForm()));
+  };
+  const handleEdit = (item: any) => {
+    const updatedName = prompt("EditName:", item.name);
+    if (!updatedName) return;
+    const updatedQty = prompt("EditQuantity:", item.quantity);
+    dispatch(editItemThunk({...item, name: updatedName, catergory: updatedName, quantity: updatedQty || item.quantity }));
   };
   return (
     <div>
-      <Link to = "/home"><div className={style.bc}> <MdArrowBackIos/> </div></Link>
-      <h1>{catergory} Items</h1>
-      <div className={style.itemsContainer}>
-        {items
-          .filter((i) =>i.category === catergory)
-          .map((item,i) => (
-            <div key={i} className={style.itemRow}>
-              <div className={style.inputs}>
-                <span>{item.catergory}</span>
-                <button onClick={() => dispatch(toggleDropdown(openIndex === i ? null : i))}>
-                  {openIndex === i? "Hide ":"Show"}
-                </button>
-              </div>
-              {openIndex === i && (<div className={style.drop}>
-                  <p>{item.name}</p>
-  <p>{item.notes || "Nothng"}</p></div>)}
+      <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
+      <h1>{catergory} - {groceryItems.length} items</h1>
+      {Object.keys(grouped).map((groupName) => (
+        <div key={groupName} className={style.group}>
+          <h2 className={style.text}>
+            {groupName} - {grouped[groupName].length} items
+            <button onClick={() => dispatch(setAddIndex(addIndex === groupName? null : groupName as any))}>+ Add to {groupName}</button>
+          </h2>
+          {addIndex === groupName && (
+            <div className={style.nn}>
+              <input placeholder="Name" value={newName} 
+              onChange={(e) => dispatch(setNewName(e.target.value))} />
+              <input placeholder="Qty" value={newQty} 
+              onChange={(e) => dispatch(setNewQty(e.target.value))} />
+              <input placeholder="Notes" value={newNotes} 
+              onChange={(e) => dispatch(setNewNotes(e.target.value))} />
+              <Buttons label={`Save to ${groupName}`} type="button" 
+              variant="inputting" 
+              onClick={() => handleAddToGroup(groupName)} />
             </div>
-          ))}
-      </div>
-
-
+          )}
+          {grouped[groupName].map((item: any) => {
+            const uniqueId = `${groupName}-${item.id}`;
+            return (
+              <div key={item.id} className={style.itemRow}>
+                <div className={style.inputs}>
+           <span>{item.name} - {item.quantity}</span>
+             <button onClick={() => dispatch(toggleDropdown(openIndex === uniqueId? null : uniqueId))}>
+           {openIndex === uniqueId? "Hide":"Show"}
+            </button>
+            </div>
+           {openIndex === uniqueId && (
+              <div className={style.drop}>
+                <p><b>Name:</b> {item.name}</p>
+                <p><b>Qty:</b> {item.quantity}</p>
+                <p><b>Notes:</b> {item.notes}</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
+            <Buttons label="Edit" type="button" variant="inputting" onClick={() => handleEdit(item)} />
+         <Buttons label="Delete" type="button" variant="inputting" onClick={() => item.id && dispatch(deleteItemThunk(item.id))} />
+            </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ))}
       <div className={style.addForm}>
-        <input
-          type="text"
-          value={inputCatergory}
-          onChange={(e) => dispatch(setItemCatergory(e.target.value))}
-          placeholder="cater"/>
-        <input type="text"
-          value={inputNotes}
-          onChange={(e) => dispatch(setItemNotes(e.target.value))}
-          placeholder="Note"/>
-        <input type="text"
-          value={inputName}
-          onChange={(e) => dispatch(setItemName(e.target.value))}
-          placeholder="name"/>
-        <input type="text"
-          value={inputQuantity}
-          onChange={(e) => dispatch(setItemQuantity(e.target.value))}
-          placeholder="quantity"/>
+        <h3>Add new category item to {catergory}</h3>
+        <input value={inputCatergory}
+        onChange={(e) => dispatch(setItemCatergory(e.target.value))} 
+        placeholder="Category" />
+        <input value={inputName} 
+        onChange={(e) => dispatch(setItemName(e.target.value))} 
+        placeholder="Item name" />
+        <input value={inputQuantity} 
+        onChange={(e) => dispatch(setItemQuantity(e.target.value))} 
+        placeholder="Quantity" />
+        <input value={inputNotes} 
+        onChange={(e) => dispatch(setItemNotes(e.target.value))} 
+        placeholder="Note" />
         <div className={style.buttonAdd}>
-          <Buttons type="button"
-          label="Add Item"
-          icon={<IoIosAddCircle />}
-          variant="inputting"
-          onClick={handleAddItem}/>
-          </div>
+          <Buttons label="Add Item" icon={<IoIosAddCircle />} variant="inputting" type="button" onClick={handleAddMain} />
+        </div>
       </div>
     </div>
   );

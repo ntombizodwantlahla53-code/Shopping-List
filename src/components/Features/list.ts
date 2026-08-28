@@ -26,7 +26,7 @@ const initialState: Mainee = {
 };
 export const fetchList = createAsyncThunk("list/fetchList",async (main: Main,thunkAPI) => {
     try {
-      const response = await fetch("http://localhost:3000/main",{
+      const response = await fetch(`http://localhost:3000/main`,{
           method: "POST",
           headers: {"Content-Type":"application/json",},
           body: JSON.stringify(main),
