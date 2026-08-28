@@ -4,20 +4,20 @@
 }
 .bc{
     text-align: start;
-    border: solid black;
+  
 }
 .addForm{
     display: flex;
     flex-direction: column;
     width: 95%;
     margin-bottom: 20px;
-    color: aqua;
-    background-color: bisque;
+    color: black;
+
 }
 .buttonAdd{
-    text-align: center;
-    background-color: blueviolet;
+    margin-left: -5px;
     color: black;
+    width: 70vw;
 }
 .nn{
     background: #f5f5f5;
@@ -33,4 +33,31 @@
      border: 1px solid #ddd;
      padding: 10px;
      border-radius: 10px; 
+}
+.itemcontainer{
+    width: 80vw;
+    height: 95vh;
+    border: solid black;
+    margin: 20px auto; 
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: rgb(224, 222, 222);
+}
+.top{
+ color:  rgb(255, 52, 85); 
+}
+.buttonAdd{
+    text-align: center; 
+}
+.in{
+    margin-bottom: 30px;
+    height: 30px;
+    border-radius: 25px;
+}
+.smalladd{
+    border-radius: 25px;
+    background-color:rgb(255, 52, 85);
+    width: 120px;
+    height: 30px;
 }

@@ -1,15 +1,22 @@
-import { Searchbar } from '../Search/SearchBar'
+
+import { FaSearch } from "react-icons/fa";
 
 export interface SearchProps{
-    searchQuery : string
-    onSearch : (newValue: string)=> void
+ value: string;
+ onChange: (value:string)=> void;
+    placeholder?:string;
 
 }
 
-export const Search: React.FC<SearchProps> = ({searchQuery,onSearch}) => {
+export const Search=({value, onChange, placeholder= "Search list"}:SearchProps) =>{
     return (
     <div>
-        <Searchbar searchQuery={searchQuery}  onSearch={onSearch}/>
+        <FaSearch/>
+        <input type='text'
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}/>
         </div>
-        )
+        
+    )
 }

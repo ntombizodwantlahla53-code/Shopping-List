@@ -50,14 +50,14 @@ export const Item = () => {
     dispatch(editItemThunk({...item, name: updatedName, catergory: updatedName, quantity: updatedQty || item.quantity }));
   };
   return (
-    <div>
+    <div className={style.itemcontainer}>
       <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
-      <h1>{catergory} - {groceryItems.length} items</h1>
+      <h1 className={style.top}>{catergory} - {groceryItems.length} items</h1>
       {Object.keys(grouped).map((groupName) => (
         <div key={groupName} className={style.group}>
           <h2 className={style.text}>
             {groupName} - {grouped[groupName].length} items
-            <button onClick={() => dispatch(setAddIndex(addIndex === groupName? null : groupName as any))}>+ Add to {groupName}</button>
+            <button className={style.smalladd} onClick={() => dispatch(setAddIndex(addIndex === groupName? null : groupName as any))}>+ Add to {groupName}</button>
           </h2>
           {addIndex === groupName && (
             <div className={style.nn}>
@@ -100,16 +100,16 @@ export const Item = () => {
       ))}
       <div className={style.addForm}>
         <h3>Add new category item to {catergory}</h3>
-        <input value={inputCatergory}
+        <input className={style.in} value={inputCatergory}
         onChange={(e) => dispatch(setItemCatergory(e.target.value))} 
         placeholder="Category" />
-        <input value={inputName} 
+        <input className={style.in} value={inputName} 
         onChange={(e) => dispatch(setItemName(e.target.value))} 
         placeholder="Item name" />
-        <input value={inputQuantity} 
+        <input className={style.in} value={inputQuantity} 
         onChange={(e) => dispatch(setItemQuantity(e.target.value))} 
         placeholder="Quantity" />
-        <input value={inputNotes} 
+        <input className={style.in} value={inputNotes} 
         onChange={(e) => dispatch(setItemNotes(e.target.value))} 
         placeholder="Note" />
         <div className={style.buttonAdd}>

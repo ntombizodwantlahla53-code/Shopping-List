@@ -4,13 +4,15 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { IoIosLogOut } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../Redux/store";
 import {logout} from "../Features/login";
-import {clearLists} from "../Features/list";
+import {clearLists, setSearchTerm} from "../Features/list";
 import {useNavigate} from "react-router-dom";
+import type{ RootState } from '../../Redux/store';
 
 export const Navbar =() => {
+  const searchTerm= useSelector((state: RootState) => state.main.searchTerm);
   const dispatch = useDispatch<AppDispatch>();
   const navigate =useNavigate();
 
@@ -25,7 +27,12 @@ export const Navbar =() => {
     <nav>
         <div className={styles.content}>    
             <div className={styles.heading}>
-          <FaSearch/>
+          
+          <input className={styles.ss}type="text"
+          placeholder='searhlist'
+          value={searchTerm}
+          onChange={(e) =>dispatch(setSearchTerm(e.target.value))}
+          />
           </div>
 
             

@@ -5,6 +5,7 @@ export interface Main {
   id?:number;
   catergory:string;
   userId:number;
+
 }
 interface Mainee {
   details:{
@@ -14,6 +15,7 @@ interface Mainee {
   links: Main[];
   loading: boolean;
   error: string | null;
+  searchTerm: string;
 }
 const initialState: Mainee = {
   details:{
@@ -23,6 +25,7 @@ const initialState: Mainee = {
   links: [],
   loading: false,
   error: null,
+  searchTerm: "",
 };
 export const fetchList = createAsyncThunk("list/fetchList",async (main: Main,thunkAPI) => {
     try {
@@ -115,6 +118,10 @@ export const mainSlice = createSlice({
       state.links = [];
       state.details = {catergory: "",userId: 0,};
     },
+    setSearchTerm:(state,action: PayloadAction<string>) => {
+      state.searchTerm=action.payload;
+    }
+
   },
   extraReducers: (builder) => {
     builder
@@ -170,5 +177,5 @@ export const mainSlice = createSlice({
         });
       },
 });
-export const {lists,deletelist,clearLists,} = mainSlice.actions;
+export const {lists,deletelist,clearLists,setSearchTerm} = mainSlice.actions;
 export default mainSlice.reducer;

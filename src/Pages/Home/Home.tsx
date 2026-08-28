@@ -9,12 +9,21 @@ import { deleteItem, fetchLists, editItem } from "../../components/Features/list
 import { fetchItems } from "../../components/Features/items";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { BiSolidEditAlt } from "react-icons/bi";
+import { HiEye } from "react-icons/hi";
+import { FaShareNodes } from "react-icons/fa6";
+
 
 export const Home = () => {
-  const { links, loading, error } = useSelector((state: RootState) => state.main);
-  const { items } = useSelector((state: RootState) => state.items); 
+  const { links, loading, error, searchTerm } = useSelector((state: RootState) => state.main);
+  const { items } = useSelector((state: RootState) => state.items);
   const user = useSelector((state: RootState) => state.login.user);
   const dispatch = useDispatch<AppDispatch>();
+
+  const filteredLinks = links.filter((link) =>
+    link.catergory.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     if (user?.id) {
@@ -64,7 +73,7 @@ export const Home = () => {
           </div>
 
           <div className={style.cater}>
-            {links.map((link, index) => {
+            {filteredLinks.map((link, index) => {
               const count = items.filter((i) => i.category === link.catergory).length;
               return (
                 <div key={link.id?? index} className={style.yea}>
@@ -74,22 +83,22 @@ export const Home = () => {
                     {count} {count === 1? "item":"items"}
                   </p></div>
                   <div className={style.bbtn} onClick={() => handleDelete(link.id)}>
-                    <Buttons type="button" label="Delete" 
-                    icon={<IoIosAddCircle />} 
-                    variant="inputting" />
+                    <button className={style.deletebtn}><RiDeleteBin6Fill/></button>
                   </div>
-                  <div className={style.bbtn} 
-                  onClick={() => handleEdit(link.id, link.catergory)}>
-                    <Buttons type="button" label="Edit" icon={<IoIosAddCircle />} variant="inputting" />
+                  <div className={style.bbtn} onClick={() => handleEdit(link.id, link.catergory)}>
+                    <button className={style.editbtn}><BiSolidEditAlt/></button>
                   </div>
                   <Link to={`/items/${link.catergory}`}>
                     <div className={style.btn}>
-                      <Buttons type="button" label="View" 
-                      icon={<IoIosAddCircle />} 
-                      variant="inputting" />
+                      <button className={style.viewbtn}><HiEye/></button>
                     </div>
+                    
                   </Link>
+                  <div className={style.bbtnn}>
+                      <button className={style.sbtn}><FaShareNodes/></button>
+                    </div>
                 </div>
+
               );
             })}
           </div>
