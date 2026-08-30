@@ -12,6 +12,7 @@
     width: 95%;
     margin-bottom: 20px;
     color: black;
+   
 
 }
 .buttonAdd{
@@ -33,16 +34,21 @@
      border: 1px solid #ddd;
      padding: 10px;
      border-radius: 10px; 
+     border: 3px solid rgb(135, 28, 46);
+    background-color: rgb(196, 194, 194);
+    margin-top: 10px;
 }
 .itemcontainer{
     width: 80vw;
-    height: 95vh;
+    max-height: 95vh;
     border: solid black;
     margin: 20px auto; 
     padding: 25px;
     box-sizing: border-box;
     border-radius: 24px;
     background-color: rgb(224, 222, 222);
+    overflow-y: scroll;
+
 }
 .top{
  color:  rgb(255, 52, 85); 
@@ -60,4 +66,25 @@
     background-color:rgb(255, 52, 85);
     width: 120px;
     height: 30px;
+}
+.img{
+    width: 30px;
+    height: 30px;
+}
+.inputs{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.dropdown{
+    color: black;
+    background-color: white;
+    border: rgb(255, 52, 85);
+    
+}
+.cancel{
+    background-color: rgb(255, 52, 85);
+  color: white;
+  margin-top: 10px;
 }

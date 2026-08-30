@@ -32,12 +32,22 @@ export const Home = () => {
       return b.catergory.localeCompare(a.catergory);
     }
     if(sortBy==="oldest"){
-      return (a.id ?? 0) - (b.id ?? 0);
+      return (a.createdAt ?? 0)-(b.createdAt ?? 0);
     }
     //Default: "newest"
-      return (a.id ?? 0) - (b.id ?? 0);
-  
+      return (b.createdAt ?? 0)-(a.createdAt ?? 0);
+
   });
+  const formatDate = (timestamp?:number) => {
+    if (!timestamp) return "";
+    return new Date(timestamp).toLocaleString([],{
+      day: '2-digit',
+      month:'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  }
   const handleShare = (categoryName: string) => {
     const listItems = items.filter((i) => i.category === categoryName);
     const itemNames = listItems.map((i) => `- ${i.name}`).join("\n");
@@ -69,7 +79,7 @@ export const Home = () => {
     if (!id) return;
     const newCategory = prompt("enter new cart:", catergory);
     if (!newCategory ||!user?.id) return;
-    dispatch(editItem({ id, catergory: newCategory, userId: user.id }));
+    dispatch(editItem({ id, catergory: newCategory, userId: user.id ,createdAt: Date.now()}));
   };
 
   return (
@@ -113,10 +123,12 @@ export const Home = () => {
               return (
                 <div key={link.id?? index} className={style.yea}>
                   <div className={style.q}>
-                  <p className={style.name}>{link.catergory}</p>
+                  <h2 className={style.name}>{link.catergory}</h2>
                   <p className={style.count}>
                     {count} {count === 1? "item":"items"}
-                  </p></div>
+                  </p>
+                  <p className={style.date}>{formatDate(link.createdAt)}</p>
+                  </div>
                   <div className={style.bbtn} onClick={() => handleDelete(link.id)}>
                     <button className={style.deletebtn}><RiDeleteBin6Fill/></button>
                   </div>
@@ -127,13 +139,11 @@ export const Home = () => {
                     <div className={style.btn}>
                       <button className={style.viewbtn}><HiEye/></button>
                     </div>
-                    
                   </Link>
                   <div className={style.bbtnn} onClick={() => handleShare(link.catergory)}>
                       <button className={style.sbtn}><FaShareNodes/></button>
                     </div>
                 </div>
-
               );
             })}
           </div>

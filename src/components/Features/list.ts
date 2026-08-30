@@ -5,6 +5,7 @@ export interface Main {
   id?:number;
   catergory:string;
   userId:number;
+  createdAt: number;
 
 }
 interface Mainee {

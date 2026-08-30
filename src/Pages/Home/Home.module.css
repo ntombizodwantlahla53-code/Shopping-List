@@ -23,7 +23,7 @@
     text-decoration: underline;
     font-weight: 700;
     font-size: 40px;
-    margin-top: 50px;
+    margin-top: 60px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .hometitle2{
@@ -50,10 +50,10 @@
 }
 .yea{
     display: flex;
-    border: solid white;
+   border: 3px solid rgb(135, 28, 46);
     margin-bottom: 20px;
     border-radius: 24px;
-    
+    background-color: rgb(196, 194, 194)
 }
 .name{
     margin:20px;
@@ -111,4 +111,20 @@
 }
 .q{
    flex:1; 
+}
+.sort{
+    border: solid black;
+    height: 50px;
+    width: 230px;
+    border-radius: 25px;
+    margin-top: 29px;
+    margin-left: 150px;
+    background-color: rgb(255, 52, 85);
+    color: white;
+}
+.date{
+    padding-left: 20px;
+}
+.count{
+    padding-left: 15px;
 }

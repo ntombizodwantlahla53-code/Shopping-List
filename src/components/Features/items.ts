@@ -8,6 +8,7 @@ export interface Item {
   notes: string;
   name: string;
   quantity: string;
+  image? :string;
 }
 
 interface ItemsState {
@@ -16,7 +17,7 @@ interface ItemsState {
   inputNotes: string;
   inputName: string;
   inputQuantity: string;
-
+inputImage:string;
   addIndex: string | null;
   newName: string;
   newNotes: string;
@@ -24,6 +25,7 @@ interface ItemsState {
   openIndex: string | null;
   loading: boolean;
   error: string | null;
+
 }
 
 const initialState: ItemsState = {
@@ -32,6 +34,7 @@ const initialState: ItemsState = {
   inputName: "",
   inputNotes: "",
   inputQuantity:"",
+  inputImage: "",
   addIndex: null,
   newName: "",
   newNotes: "",
@@ -98,6 +101,9 @@ export const itemsSlice = createSlice({
     setNewNotes: (state, action: PayloadAction<string>) => { 
       state.newNotes = action.payload; 
     },
+    setItemImage: (state, action: PayloadAction<string>) => { 
+      state.inputImage = action.payload; 
+    },
     setNewQty: (state, action: PayloadAction<string>) => { 
       state.newQty = action.payload; 
     },
@@ -106,6 +112,7 @@ export const itemsSlice = createSlice({
       state.newNotes = ""; 
       state.newQty = ""; 
       state.addIndex = null; 
+      state.inputImage="";
     },
   },
   extraReducers: (builder) => {
@@ -125,5 +132,5 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setItemCatergory, setItemNotes, setItemName, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes, setNewQty, clearAddForm } = itemsSlice.actions;
+export const { setItemCatergory, setItemNotes, setItemName, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes,setItemImage, setNewQty, clearAddForm } = itemsSlice.actions;
 export default itemsSlice.reducer;

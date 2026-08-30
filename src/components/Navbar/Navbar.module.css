@@ -3,6 +3,7 @@
     top: 0; 
     height:60px;
     width:100vw ;
+    
 
 }
 .content{
@@ -43,5 +44,11 @@ display: flex;
 .sNow:hover{
     color:orange;
 
+}
+.ss{
+    border: solid palevioletred;
+    height: 30px;
+    width: 230px;
+    border-radius: 25px;
 }
 

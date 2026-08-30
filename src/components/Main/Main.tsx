@@ -25,6 +25,7 @@ export const Main = () => {
       fetchList({
         catergory:details.catergory,
         userId:user.id,
+        createdAt: Date.now(),
       })
     )
      .unwrap()
