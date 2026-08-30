@@ -5,7 +5,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { Buttons } from "../../components/Buttons/Button";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
-import { deleteItem, fetchLists, editItem } from "../../components/Features/list";
+import { deleteItem, fetchLists, editItem , setSortBy} from "../../components/Features/list";
 import { fetchItems } from "../../components/Features/items";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ import { FaShareNodes } from "react-icons/fa6";
 
 
 export const Home = () => {
-  const { links, loading, error, searchTerm } = useSelector((state: RootState) => state.main);
+  const { links, loading, error, searchTerm ,sortBy} = useSelector((state: RootState) => state.main);
   const { items } = useSelector((state: RootState) => state.items);
   const user = useSelector((state: RootState) => state.login.user);
   const dispatch = useDispatch<AppDispatch>();
@@ -24,7 +24,35 @@ export const Home = () => {
   const filteredLinks = links.filter((link) =>
     link.catergory.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const sortedLinks= [...filteredLinks].sort((a,b)=>{
+    if(sortBy==="az"){
+      return a.catergory.localeCompare(b.catergory);
+    }
+   if(sortBy==="za"){
+      return b.catergory.localeCompare(a.catergory);
+    }
+    if(sortBy==="oldest"){
+      return (a.id ?? 0) - (b.id ?? 0);
+    }
+    //Default: "newest"
+      return (a.id ?? 0) - (b.id ?? 0);
+  
+  });
+  const handleShare = (categoryName: string) => {
+    const listItems = items.filter((i) => i.category === categoryName);
+    const itemNames = listItems.map((i) => `- ${i.name}`).join("\n");
+    const textToShare = `My Shopping List: ${categoryName}\n\nItems:\n${itemNames}`;
 
+    if(navigator.share){
+      navigator.share({
+        title: categoryName,
+        text: textToShare,
+      }).catch((error) => console.log("sharing failed", error));
+    } else {
+      navigator.clipboard.writeText(textToShare);
+      alert("List is copied to cliboard");
+    }
+  }
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchLists(user.id));
@@ -65,6 +93,13 @@ export const Home = () => {
         <>
           <div className={style.new}>
             <h1 className={style.hometitle2}>Shopping List</h1>
+            <select value={sortBy}
+            onChange={(e)=> dispatch(setSortBy(e.target.value as any))} className={style.sort}>
+              <option value={"newest"}>Newest to Oldest</option>
+              <option value={"oldest"}>Oldest to Newest</option>
+              <option value={"az"}>A to Z</option>
+              <option value={"za"}>Z to A</option>
+            </select>
             <div className={style.button}>
               <Link to="/main">
                 <Buttons type="submit" label="Add List" icon={<IoIosAddCircle />} variant="inputting" />
@@ -73,7 +108,7 @@ export const Home = () => {
           </div>
 
           <div className={style.cater}>
-            {filteredLinks.map((link, index) => {
+            {sortedLinks.map((link, index) => {
               const count = items.filter((i) => i.category === link.catergory).length;
               return (
                 <div key={link.id?? index} className={style.yea}>
@@ -94,7 +129,7 @@ export const Home = () => {
                     </div>
                     
                   </Link>
-                  <div className={style.bbtnn}>
+                  <div className={style.bbtnn} onClick={() => handleShare(link.catergory)}>
                       <button className={style.sbtn}><FaShareNodes/></button>
                     </div>
                 </div>

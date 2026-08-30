@@ -41,23 +41,23 @@ export const Profile = () => {
         ) : (
           <>
             <div className={style.edittingT}>
-              <label>Name</label>
+              <label>Name:</label>
               <input className={style.input} value={user.name}
                 onChange={(e) =>dispatch(updateProfile({name:e.target.value,}))
                 }/>
             </div>
-            <div className={style.edittingT}><label>Surname</label>
+            <div className={style.edittingT}><label>Surname:</label>
               <input className={style.input} value={user.surname}
                 onChange={(e) =>dispatch(updateProfile({surname:e.target.value,}))
                 }/>
             </div>
             <div className={style.edittingT}>
-              <label>Cell Number</label>
+              <label>Cell Number:</label>
               <input className={style.input} value={user.cellNumber}
                 onChange={(e) =>dispatch(updateProfile({cellNumber:e.target.value,}))
                 }/>
             </div>
-            <div className={style.edittingT}><label>Email</label>
+            <div className={style.edittingT}><label>Email:</label>
               <input className={style.input} value={user.email}
                 type="email"
                 onChange={(e) =>dispatch(updateProfile({email:e.target.value,}))

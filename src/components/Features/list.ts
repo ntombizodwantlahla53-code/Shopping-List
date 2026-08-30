@@ -16,6 +16,7 @@ interface Mainee {
   loading: boolean;
   error: string | null;
   searchTerm: string;
+  sortBy: "az"| "za"| "newest" | "oldest";
 }
 const initialState: Mainee = {
   details:{
@@ -26,6 +27,7 @@ const initialState: Mainee = {
   loading: false,
   error: null,
   searchTerm: "",
+  sortBy: "newest",
 };
 export const fetchList = createAsyncThunk("list/fetchList",async (main: Main,thunkAPI) => {
     try {
@@ -120,8 +122,10 @@ export const mainSlice = createSlice({
     },
     setSearchTerm:(state,action: PayloadAction<string>) => {
       state.searchTerm=action.payload;
+    },
+    setSortBy:(state,action: PayloadAction<"az"| "za"| "newest" | "oldest">) => {
+      state.sortBy=action.payload;
     }
-
   },
   extraReducers: (builder) => {
     builder
@@ -177,5 +181,5 @@ export const mainSlice = createSlice({
         });
       },
 });
-export const {lists,deletelist,clearLists,setSearchTerm} = mainSlice.actions;
+export const {lists,deletelist,clearLists,setSearchTerm, setSortBy} = mainSlice.actions;
 export default mainSlice.reducer;
