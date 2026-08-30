@@ -1,6 +1,6 @@
 import { Text } from '../Text/Text';
 import styles from './Navbar.module.css'
-import { FaSearch } from "react-icons/fa";
+
 import { Link } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { IoIosLogOut } from "react-icons/io";
