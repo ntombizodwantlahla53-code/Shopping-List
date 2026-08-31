@@ -3,7 +3,7 @@
     border: solid black;
     border-radius: 24px;
     width: 80vw;
-    height: 100vh;
+  
     max-width: 100%;
     margin: 20px auto; 
     padding: 25px;
@@ -27,7 +27,7 @@
 .title{
     text-align: center;
     margin-top: -40px;
-
+    margin-bottom: 50px;
 }
 .profil{
     margin-top: 90px;
@@ -51,22 +51,31 @@
     
 }
 .edittingT{
-  margin-bottom: 10px;
-  display: flex;
+  display: block;
 
 }
 .input{
     border-radius: 25px;
     width: 300px;
-    height: 20px;
-    border: solid palevioletred;
-    margin-top: 15px;
+    height: 15px;
+    padding: 10px;
+    border: 1px solid palevioletred;
+    margin-bottom: 15px;
+    display: block;
+
 }
 .inputs{
     width: 300px;
     height: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border: 1px solid black;
-    border-radius: 25px;
+    
     padding: 10px;
+    display: block;
+}
+label{
+    display: block;
+    font-size: medium;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

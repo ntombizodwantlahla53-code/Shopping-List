@@ -41,27 +41,29 @@ export const Profile = () => {
         ) : (
           <>
             <div className={style.edittingT}>
-              <label>Name:</label>
+              <label>Name:
               <input className={style.input} value={user.name}
                 onChange={(e) =>dispatch(updateProfile({name:e.target.value,}))
-                }/>
-            </div>
-            <div className={style.edittingT}><label>Surname:</label>
+                }/></label>
+            
+         
+              <label>Surname:
               <input className={style.input} value={user.surname}
                 onChange={(e) =>dispatch(updateProfile({surname:e.target.value,}))
-                }/>
-            </div>
-            <div className={style.edittingT}>
-              <label>Cell Number:</label>
+                }/></label>
+            
+            
+              <label>Cell Number:
               <input className={style.input} value={user.cellNumber}
                 onChange={(e) =>dispatch(updateProfile({cellNumber:e.target.value,}))
-                }/>
-            </div>
-            <div className={style.edittingT}><label>Email:</label>
+                }/></label>
+         
+            
+              <label>Email:
               <input className={style.input} value={user.email}
                 type="email"
                 onChange={(e) =>dispatch(updateProfile({email:e.target.value,}))
-                }/>
+                }/></label>
             </div>
             <button className={style.saveBTN}onClick={handleSave} disabled={loading}>
               {loading? "Saving...": "Save"}</button>
