@@ -129,9 +129,7 @@
 .count{
     padding-left: 15px;
 }
-@media(max-width:768px){
-   
-}
+
 
 @media(width<=658px) and (width>=320px){
      .new{
@@ -140,5 +138,12 @@
     }
     .sort{
         margin-right: 150px;
+    }
+    
+        
+    
+    .bbtn{
+        display: flex;
+        flex-direction: column;
     }
 }

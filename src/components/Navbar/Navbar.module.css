@@ -52,12 +52,10 @@ display: flex;
     border-radius: 25px;
 }
 
-@media(max-width:768px){
-    
-}
-
 @media(width<=658px) and (width>=320px){
-    
+    .ss{
+        width: 210px;
+    }
 }
 
 
