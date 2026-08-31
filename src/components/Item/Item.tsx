@@ -131,7 +131,7 @@ export const Item = () => {
                 <p><b>Name:</b> {item.name}</p>
                 <p><b>Qty:</b> {item.quantity}</p>
                 <p><b>Notes:</b> {item.notes}</p>
-                {item.image && <img src= {item.image} className={style.img}/>}
+                <p><b>Image: </b>{item.image && <img src= {item.image} className={style.img}/>}</p>
 
                 <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
             <Buttons label="Edit" type="button" variant="inputting" onClick={() => handleEdit(item)} />
