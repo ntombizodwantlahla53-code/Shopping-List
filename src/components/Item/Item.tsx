@@ -7,6 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import style from "./Item.module.css";
 import { MdArrowBackIos } from "react-icons/md"
 import { useEffect } from "react";
+import { FcCancel } from "react-icons/fc";
 
 export const Item = () => {
   const { catergory } = useParams();
@@ -17,12 +18,14 @@ export const Item = () => {
      dispatch(fetchItems()); 
     }, [dispatch]);
   const groceryItems = items.filter((i) => i.category === catergory);
-  const grouped = groceryItems.reduce((acc: any, item) => {
+  const grouped: Record<string, any[]> = {};
+  for (const item of groceryItems) {
     const key = item.catergory || "Other";
-    if (!acc[key]) acc[key] = [];
-    acc[key].push(item);
-    return acc;
-  }, {});
+    if (!grouped[key]) {
+      grouped[key] = [];
+    }
+    grouped[key].push(item);
+  }
   const handleAddMain = () => {
     if (!inputName.trim() ||!inputCatergory.trim() ||!catergory) return;
     dispatch(fetchItem({
@@ -59,7 +62,7 @@ export const Item = () => {
     return(
       <div className={style.itemcontainer}>
       <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
-      {groceryItems.length> 0 && <button className={style.cancel} onClick={() =>dispatch(setAddIndex(null))}>Cancel</button>}
+      {groceryItems.length> 0 && <button className={style.cancel} onClick={() =>dispatch(setAddIndex(null))}><FcCancel/>Cancel</button>}
 <div className={style.addForm}>
         <h3>Add new category item to {catergory}</h3>
         <input className={style.in} value={inputCatergory}
@@ -74,7 +77,7 @@ export const Item = () => {
         <input className={style.in} value={inputNotes} 
         onChange={(e) => dispatch(setItemNotes(e.target.value))} 
         placeholder="Note" />
-        <input type="file" accept="image/*" onChange={(e) => {
+        <input className={style.in} type="file" accept="image/*" onChange={(e) => {
         const file =(e.target as HTMLInputElement).files?.[0];
         if(!file) return;
         const reader =new FileReader();
@@ -104,15 +107,23 @@ export const Item = () => {
           </h2>
           {addIndex === groupName && (
             <div className={style.nn}>
-              <input placeholder="Name" value={newName} 
+              <input className={style.sinput} placeholder="Name" value={newName} 
               onChange={(e) => dispatch(setNewName(e.target.value))} />
-              <input placeholder="Qty" value={newQty} 
+              <input className={style.sinput} placeholder="Qty" value={newQty} 
               onChange={(e) => dispatch(setNewQty(e.target.value))} />
-              <input placeholder="Notes" value={newNotes} 
+              <input className={style.sinput} placeholder="Notes" value={newNotes} 
               onChange={(e) => dispatch(setNewNotes(e.target.value))} />
+              <input className={style.sinput} type="file" accept="image/*" onChange={(e) => {
+        const file =(e.target as HTMLInputElement).files?.[0];
+        if(!file) return;
+        const reader =new FileReader();
+        reader.onload=() => dispatch(setItemImage(reader.result as string));
+        reader.readAsDataURL(file);
+              }}/>
+              <div className={style.savebutton}>
               <Buttons label={`Save to ${groupName}`} type="button" 
               variant="inputting" 
-              onClick={() => handleAddToGroup(groupName)} />
+              onClick={() => handleAddToGroup(groupName)} /></div>
             </div>
           )}
           {grouped[groupName].map((item: any) => {
@@ -133,7 +144,7 @@ export const Item = () => {
                 <p><b>Notes:</b> {item.notes}</p>
                 <p><b>Image: </b>{item.image && <img src= {item.image} className={style.img}/>}</p>
 
-                <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
+                <div className={style.top}>
             <Buttons label="Edit" type="button" variant="inputting" onClick={() => handleEdit(item)} />
          <Buttons label="Delete" type="button" variant="inputting" onClick={() => item.id && dispatch(deleteItemThunk(item.id))} />
             </div>

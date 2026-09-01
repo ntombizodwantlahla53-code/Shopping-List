@@ -10,6 +10,7 @@ import {logout} from "../Features/login";
 import {clearLists, setSearchTerm} from "../Features/list";
 import {useNavigate} from "react-router-dom";
 import type{ RootState } from '../../Redux/store';
+import { BsFillSearchHeartFill } from "react-icons/bs";
 
 export const Navbar =() => {
   const searchTerm= useSelector((state: RootState) => state.main.searchTerm);
@@ -27,12 +28,12 @@ export const Navbar =() => {
     <nav>
         <div className={styles.content}>    
             <div className={styles.heading}>
-          
+          <label>Search <BsFillSearchHeartFill/> :
           <input className={styles.ss}type="text"
           placeholder='searhlist'
           value={searchTerm}
           onChange={(e) =>dispatch(setSearchTerm(e.target.value))}
-          />
+          /></label >
           </div>
 
             

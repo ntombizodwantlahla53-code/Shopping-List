@@ -2,10 +2,10 @@ import {createSlice,createAsyncThunk,} from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Main {
-  id?:number;
-  catergory:string;
-  userId:number;
-  createdAt: number;
+  id?:number; //id for list
+  catergory:string; //cater yelist
+  userId:number; //id for user who owns the list
+  createdAt: number; //date of creation for the list
 
 }
 interface Mainee {
@@ -13,7 +13,7 @@ interface Mainee {
     catergory: string;
     userId: number;
   };
-  links: Main[];
+  links: Main[]; //all fetched list are here
   loading: boolean;
   error: string | null;
   searchTerm: string;

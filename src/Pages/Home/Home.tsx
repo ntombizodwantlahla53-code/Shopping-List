@@ -18,12 +18,14 @@ import { FaShareNodes } from "react-icons/fa6";
 export const Home = () => {
   const { links, loading, error, searchTerm ,sortBy} = useSelector((state: RootState) => state.main);
   const { items } = useSelector((state: RootState) => state.items);
-  const user = useSelector((state: RootState) => state.login.user);
+  const user = useSelector((state: RootState) => state.login.user); //extract login user infoo
   const dispatch = useDispatch<AppDispatch>();
 
+  //filter links based on what i search on search
   const filteredLinks = links.filter((link) =>
     link.catergory.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  //sort filtered links based on the selected sort option
   const sortedLinks= [...filteredLinks].sort((a,b)=>{
     if(sortBy==="az"){
       return a.catergory.localeCompare(b.catergory);
@@ -34,9 +36,10 @@ export const Home = () => {
     if(sortBy==="oldest"){
       return (a.createdAt ?? 0)-(b.createdAt ?? 0);
     }
-    //Default: "newest"
+   if (sortBy==="newest"){
       return (b.createdAt ?? 0)-(a.createdAt ?? 0);
-
+    }
+    return 0;
   });
   const formatDate = (timestamp?:number) => {
     if (!timestamp) return "";
@@ -44,10 +47,10 @@ export const Home = () => {
       day: '2-digit',
       month:'short',
       year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
+ 
     })
   }
+  //sharing function, for my share icon
   const handleShare = (categoryName: string) => {
     const listItems = items.filter((i) => i.category === categoryName);
     const itemNames = listItems.map((i) => `- ${i.name}`).join("\n");
@@ -60,7 +63,7 @@ export const Home = () => {
       }).catch((error) => console.log("sharing failed", error));
     } else {
       navigator.clipboard.writeText(textToShare);
-      alert("List is copied to cliboard");
+      alert("List is copied to cliboard"); //if user ayishereki , it will be copied to clipboard and alert will show
     }
   }
   useEffect(() => {
@@ -103,20 +106,21 @@ export const Home = () => {
         <>
           <div className={style.new}>
             <h1 className={style.hometitle2}>Shopping List</h1>
-            <select value={sortBy}
+            
+            <div className={style.button}>
+              <Link to="/main">
+           
+                <Buttons type="submit" label="Add List" icon={<IoIosAddCircle />} variant="inputting" />
+              </Link>
+            </div>
+          </div>
+          <select value={sortBy}
             onChange={(e)=> dispatch(setSortBy(e.target.value as any))} className={style.sort}>
               <option value={"newest"}>Newest to Oldest</option>
               <option value={"oldest"}>Oldest to Newest</option>
               <option value={"az"}>A to Z</option>
               <option value={"za"}>Z to A</option>
             </select>
-            <div className={style.button}>
-              <Link to="/main">
-                <Buttons type="submit" label="Add List" icon={<IoIosAddCircle />} variant="inputting" />
-              </Link>
-            </div>
-          </div>
-
           <div className={style.cater}>
             {sortedLinks.map((link, index) => {
               const count = items.filter((i) => i.category === link.catergory).length;
@@ -129,20 +133,23 @@ export const Home = () => {
                   </p>
                   <p className={style.date}>{formatDate(link.createdAt)}</p>
                   </div>
-                  <div className={style.bbtn} onClick={() => handleDelete(link.id)}>
-                    <button className={style.deletebtn}><RiDeleteBin6Fill/></button>
+
+                  <div className={style.buttonz}>
+                  <div className={style.buttn} onClick={() => handleDelete(link.id)}>
+                    <button className={style.delete}><RiDeleteBin6Fill/></button>
                   </div>
-                  <div className={style.bbtn} onClick={() => handleEdit(link.id, link.catergory)}>
-                    <button className={style.editbtn}><BiSolidEditAlt/></button>
+                  <div className={style.buttn} onClick={() => handleEdit(link.id, link.catergory)}>
+                    <button className={style.edit}><BiSolidEditAlt/></button>
                   </div>
                   <Link to={`/items/${link.catergory}`}>
-                    <div className={style.btn}>
-                      <button className={style.viewbtn}><HiEye/></button>
+                    <div className={style.buttnV}>
+                      <button className={style.viewb}><HiEye/></button>
                     </div>
                   </Link>
-                  <div className={style.bbtnn} onClick={() => handleShare(link.catergory)}>
-                      <button className={style.sbtn}><FaShareNodes/></button>
+                  <div className={style.buttnS} onClick={() => handleShare(link.catergory)}>
+                      <button className={style.shareB}><FaShareNodes/></button>
                     </div>
+                  </div>
                 </div>
               );
             })}

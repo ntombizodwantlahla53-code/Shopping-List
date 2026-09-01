@@ -43,6 +43,7 @@ export const Login = () => {
         <div className={styles.insideContainer}>
           <div className={styles.linkss}>
             <div className={styles.title}>
+              <label>Email Address</label>
               <input className={styles.inputtitle}
                 value={loginInfo.info.email}
                 type="email"
@@ -50,6 +51,7 @@ export const Login = () => {
                 placeholder="Email Address"/>
             </div>
             <div className={styles.desc}>
+              <label>Password</label>
               <input className={styles.inputdesc}
                 value={loginInfo.info.password}
                 onChange={(e) =>dispatch(updateLogin({password: e.target.value,}))}

@@ -4,6 +4,7 @@ import { CiShop } from "react-icons/ci";
 import { Buttons } from '../../components/Buttons/Button';
 import { MdArrowBackIos } from "react-icons/md"
 import { FaShopify } from "react-icons/fa6";
+import { ImNext } from "react-icons/im";
 
 export const Landingpage = () => {
   return (
@@ -17,7 +18,7 @@ export const Landingpage = () => {
         </div>
         <Link to="/login"><Buttons type="submit"
                     label ="Next"
-                    icon={< CiShop/>}
+                    icon={< ImNext/>}
                     variant="inputting"/></Link>
        
     </div>

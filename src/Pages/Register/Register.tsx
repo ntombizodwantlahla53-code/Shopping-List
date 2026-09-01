@@ -19,6 +19,27 @@ export const Register = () => {
       alert("Passwords do not match");
       return;
     }
+
+    if (!info.name) {
+      alert("Name cannot be empty. Please enter a name.");
+      return;
+    }
+    if (!info.surname) {
+      alert("Title cannot be empty.Plz Enter Title");
+      return;
+    }
+    if (!info.cellNumber) {
+      alert("Cell number cannot be empty. Please enter a cell number.");
+      return;
+    }
+    if (!info.email) {
+      alert("Email cannot be empty. Please enter an email address.");
+      return;
+    }
+    if (!info.password) {
+    alert("Password cannot be empty. Please enter a password.");
+      return;
+    }
     dispatch(
       fetchRegs({
         name: info.name,
@@ -49,14 +70,13 @@ export const Register = () => {
         <div className={styles.insideContainer}>
           <div className={styles.linkss}>
             <div className={styles.title}>
-              <label></label>
+
               <input className={styles.inputtitle}
                 placeholder="Name"
                 value={info.name}
                 onChange={(e) =>dispatch(updateRegister({name: e.target.value,})
                   )}/>
-            </div>
-            <div className={styles.desc}>
+         
               <label></label>
               <input className={styles.inputdesc}
                 placeholder="Surname"
@@ -65,16 +85,16 @@ export const Register = () => {
                     }))
                 }/>
             </div>
-            <div className={styles.desc}>
-              <label></label>
+            <div className={styles.descc}>
+            
               <input className={styles.inputdesc}
                 placeholder="Cell Number"
                 value={info.cellNumber}
                 onChange={(e) =>dispatch(updateRegister({cellNumber: e.target.value,})
                   )
                 }/>
-            </div>
-            <div className={styles.desc}>
+            
+            
               <label></label>
               <input className={styles.inputdesc}
                 placeholder="Email Address"

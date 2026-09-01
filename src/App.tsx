@@ -37,6 +37,7 @@ function App() {
         <Route path="/home" element={<Home />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/main" element={<Main />}/>
+        <Route path="/items" element={<Item />}/>
         <Route path="/items/:catergory" element={<Item/>}/>
       </Route>
     </Routes></Router>  

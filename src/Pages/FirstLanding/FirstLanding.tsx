@@ -3,8 +3,8 @@ import style from './FirstLanding.module.css'
 import { CiShop } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { Buttons } from '../../components/Buttons/Button';
-import { IoIosAddCircle } from "react-icons/io";
 import { FaShopify } from "react-icons/fa6";
+import { ImNext } from "react-icons/im";
 
 export const FirstLanding = () => {
   return (
@@ -23,7 +23,7 @@ export const FirstLanding = () => {
       <div className={style.nextBTN}>
         <Link to="/landing2"><Buttons type="submit"
                     label ="Next"
-                    icon={<IoIosAddCircle />}
+                    icon={<ImNext  />}
                     variant="inputting"/></Link></div>
        
     </div>

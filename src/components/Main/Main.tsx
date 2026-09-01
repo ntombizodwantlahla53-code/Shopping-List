@@ -19,7 +19,7 @@ export const Main = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user?.id) {return;}
+    if (!user?.id) {return;} //if no loggedin userID, stop
 
     dispatch(
       fetchList({
@@ -37,16 +37,19 @@ export const Main = () => {
   return (
     <div>
       <div className={styles.linkContainer}>
-        
+        //going back to home page
           <Link to ="/home"><div className={styles.backbutton}><MdArrowBackIos/></div></Link>
         <div className={styles.Topic}>
           <h1 className={styles.Mytitle}>Add list</h1>
         </div>
+        
+        //handlesubmit form 
         <form onSubmit={handleSubmit}>
           <div className={styles.insideContainer}>
             <div className={styles.linkss}>
               <div className={styles.title}>
                 <label></label>
+                //update catergory as i type in the input field
                 <input className={styles.inputtitle}
                   placeholder="Category"
                   value={details.catergory}
@@ -59,7 +62,7 @@ export const Main = () => {
                 label="ADD YOUR LIST"
                 icon={<IoIosAddCircle />}
                 variant="inputting"/>
-              {error && (<p>{error}</p>)}
+              {error && (<p>{error}</p>)} // if thes error, show the error message
             </div>
           </div>
         </form>
