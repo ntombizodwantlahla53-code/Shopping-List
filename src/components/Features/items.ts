@@ -9,6 +9,8 @@ export interface Item {
   name: string;
   quantity: string;
   image? :string;
+  createdAt?: number;
+  
 }
 
 interface ItemsState {
@@ -16,7 +18,7 @@ interface ItemsState {
   inputCatergory: string;
   inputNotes: string;
   inputName: string;
-  inputQuantity: string;
+  inputQuantity:string;
 inputImage:string;
   addIndex: string | null;
   newName: string;
@@ -25,6 +27,7 @@ inputImage:string;
   openIndex: string | null;
   loading: boolean;
   error: string | null;
+  sortBy: "az"| "za"| "newest" | "oldest";
 
 }
 
@@ -42,6 +45,7 @@ const initialState: ItemsState = {
   openIndex: null,
   loading: false,
   error: null,
+  sortBy:"newest",
 };
 export const fetchItem = createAsyncThunk("items/fetchItem", async (item: Item) => 
   {
@@ -114,6 +118,9 @@ export const itemsSlice = createSlice({
       state.addIndex = null; 
       state.inputImage="";
     },
+    setItemSortBy:(state,action: PayloadAction<"az"| "za"| "newest" | "oldest">) => {
+      state.sortBy=action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -132,5 +139,5 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setItemCatergory, setItemNotes, setItemName, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes,setItemImage, setNewQty, clearAddForm } = itemsSlice.actions;
+export const { setItemCatergory, setItemNotes, setItemName, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes,setItemImage, setNewQty, clearAddForm ,setItemSortBy} = itemsSlice.actions;
 export default itemsSlice.reducer;
