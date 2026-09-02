@@ -21,9 +21,11 @@
     width: 70vw;
 }
 .nn{
-    background: #f5f5f5;
+    background: #a4a0a0;
      padding: 10px;
       margin-bottom: 10px;
+      border-radius: 25px;
+      text-align: center;
 }
 .text{
     display: flex;
@@ -62,10 +64,35 @@
     border-radius: 25px;
 }
 .smalladd{
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 25px;
+    background-color:rgb(255, 52, 85);
+    max-width: 120px;
+    height: 40px;
+    align-items: center;
+   word-break: break-all;
+   overflow-x: hidden;
+   color: white;
+}
+.smallad{
     border-radius: 25px;
     background-color:rgb(255, 52, 85);
     width: 120px;
-    height: 30px;
+    height: 40px;
+    color: white;
+}
+.sort{
+   background-color: rgb(255, 52, 85);
+   border-radius: 24px;
+   height: 20px;
+   margin-top: 10px;
+   color: white;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+  
 }
 .img{
     width: 30px;

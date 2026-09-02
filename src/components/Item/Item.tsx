@@ -42,12 +42,15 @@ export const Item = () => {
     grouped[key].push(item);
   }
   const handleAddMain = () => {
-    if (!inputName.trim() ||!inputCatergory.trim() ||!catergory) return;
+    if (!inputName.trim() ||!inputCatergory.trim() ||!catergory){
+      alert("Name and Catergory are required");
+     return;
+}
     dispatch(fetchItem({
       category: catergory,
       catergory: inputCatergory,
       name: inputName,
-      quantity: inputQuantity,
+      quantity: Number(inputQuantity) || 1,
       notes: inputNotes,
       image: inputImage,
       createdAt: Date.now(),
@@ -63,15 +66,23 @@ export const Item = () => {
       category: catergory,
       catergory: groupName,
       name: newName,
-      quantity: newQty,
-      notes: newNotes,
+      quantity: Number(newQty) ||1,
+      notes: newNotes.trim() ? newNotes: undefined,
+      image: inputImage ? inputImage : undefined,
       createdAt: Date.now(),
     })).then(() => dispatch(clearAddForm()));
   };
   const handleEdit = (item: any) => {
     const updatedName = prompt("EditName:", item.name);
     if (!updatedName) return;
-    const updatedQty = prompt("EditQuantity:", item.quantity);
+    const updateQtyInput = prompt("edit Quantity:", item.quantity);
+    if(updateQtyInput ===  null) return;
+
+    const updatedQty = Number(updateQtyInput);
+    if (isNaN(updatedQty) || updatedQty <= 0) {
+      alert("Enter valid number for Quantity");
+      return;
+    }
     const updatedNotes = prompt("EditNotes:", item.quantity);
     dispatch(editItemThunk({...item, name: updatedName, quantity: updatedQty || item.quantity ,notes: updatedNotes || item.notes}));
   };
@@ -88,7 +99,7 @@ export const Item = () => {
         <input className={style.in} value={inputName} 
         onChange={(e) => dispatch(setItemName(e.target.value))} 
         placeholder="Item name" />
-        <input className={style.in} value={inputQuantity} 
+        <input className={style.in} type="number" min="1" value={inputQuantity} 
         onChange={(e) => dispatch(setItemQuantity(e.target.value))} 
         placeholder="Quantity" />
         <input className={style.in} value={inputNotes} 
@@ -115,7 +126,8 @@ export const Item = () => {
     <div className={style.itemcontainer}>
       <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
       <h1 className={style.top}>{catergory} - {groceryItems.length} items</h1>
-      <select value={sortBy}
+      <div className={style.flex}>
+        <select value={sortBy}
             onChange={(e)=> dispatch(setItemSortBy(e.target.value as any))} className={style.sort}>
               <option value={"newest"}>Newest to Oldest</option>
               <option value={"oldest"}>Oldest to Newest</option>
@@ -123,7 +135,7 @@ export const Item = () => {
               <option value={"za"}>Z to A</option>
             </select>
 
-      <button className={style.smalladd} onClick={()=> dispatch(setAddIndex("MAIN" as any))}>add cart</button>
+      <button className={style.smallad} onClick={()=> dispatch(setAddIndex("MAIN" as any))}>add cart</button></div>
       {Object.keys(grouped).map((groupName) => (
         <div key={groupName} className={style.group}>
           <h2 className={style.text}>
@@ -134,7 +146,7 @@ export const Item = () => {
             <div className={style.nn}>
               <input className={style.sinput} placeholder="Name" value={newName} 
               onChange={(e) => dispatch(setNewName(e.target.value))} />
-              <input className={style.sinput} placeholder="Qty" value={newQty} 
+              <input className={style.sinput} placeholder="Qty" type="number" min="1" value={newQty} 
               onChange={(e) => dispatch(setNewQty(e.target.value))} />
               <input className={style.sinput} placeholder="Notes" value={newNotes} 
               onChange={(e) => dispatch(setNewNotes(e.target.value))} />

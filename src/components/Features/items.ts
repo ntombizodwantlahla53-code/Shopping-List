@@ -5,9 +5,9 @@ export interface Item {
   id?: number;
   catergory: string;
   category: string;
-  notes: string;
+  notes?: string;
   name: string;
-  quantity: string;
+  quantity: number;
   image? :string;
   createdAt?: number;
   
@@ -18,7 +18,7 @@ interface ItemsState {
   inputCatergory: string;
   inputNotes: string;
   inputName: string;
-  inputQuantity:string;
+  inputQuantity:string | number;
 inputImage:string;
   addIndex: string | null;
   newName: string;
@@ -36,12 +36,12 @@ const initialState: ItemsState = {
   inputCatergory: "",
   inputName: "",
   inputNotes: "",
-  inputQuantity:"",
+  inputQuantity:1,
   inputImage: "",
   addIndex: null,
   newName: "",
   newNotes: "",
-  newQty: "",
+  newQty:"",
   openIndex: null,
   loading: false,
   error: null,
