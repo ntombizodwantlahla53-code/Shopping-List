@@ -63,7 +63,7 @@ export const Home = () => {
       }).catch((error) => console.log("sharing failed", error));
     } else {
       navigator.clipboard.writeText(textToShare);
-      alert("List is copied to cliboard"); //if user ayishereki , it will be copied to clipboard and alert will show
+      alert("List is copied to cliboard"); // if user ayishereki , it will be copied to clipboard and alert will show
     }
   }
   useEffect(() => {
