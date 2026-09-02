@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
-import { fetchItem, fetchItems, deleteItemThunk, editItemThunk, setItemCatergory, setItemName, setItemNotes, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes,setItemImage, setNewQty, clearAddForm } from "../Features/items";
+import { fetchItem, fetchItems, deleteItemThunk, editItemThunk, setItemCatergory, setItemName, setItemNotes, setItemQuantity, toggleDropdown, setAddIndex, setNewName, setNewNotes,setItemImage, setNewQty, clearAddForm ,setItemSortBy} from "../Features/items";
 import { Buttons } from "../../components/Buttons/Button";
 import { IoIosAddCircle } from "react-icons/io";
 import style from "./Item.module.css";
@@ -12,14 +12,29 @@ import { FcCancel } from "react-icons/fc";
 export const Item = () => {
   const { catergory } = useParams();
   const dispatch = useDispatch<AppDispatch>();
-  const { items, inputCatergory, inputNotes, inputName, inputQuantity,inputImage, openIndex, addIndex, newName, newNotes, newQty } = useSelector((state: RootState) => state.items);
+  const { items, inputCatergory, inputNotes, inputName, inputQuantity,inputImage, openIndex, addIndex, newName, newNotes, newQty, sortBy } = useSelector((state: RootState) => state.items);
 
   useEffect(() => {
      dispatch(fetchItems()); 
     }, [dispatch]);
   const groceryItems = items.filter((i) => i.category === catergory);
+  const sortedItems = [...groceryItems].sort((a, b) => {
+    if(sortBy==="az"){
+      return a.catergory.localeCompare(b.catergory);
+    }
+   if(sortBy==="za"){
+      return b.catergory.localeCompare(a.catergory);
+    }
+    if(sortBy==="oldest"){
+      return (a.createdAt ?? 0)-(b.createdAt ?? 0);
+    }
+   if (sortBy==="newest"){
+      return (b.createdAt ?? 0)-(a.createdAt ?? 0);
+    }
+    return 0;
+  })
   const grouped: Record<string, any[]> = {};
-  for (const item of groceryItems) {
+  for (const item of sortedItems) {
     const key = item.catergory || "Other";
     if (!grouped[key]) {
       grouped[key] = [];
@@ -35,6 +50,7 @@ export const Item = () => {
       quantity: inputQuantity,
       notes: inputNotes,
       image: inputImage,
+      createdAt: Date.now(),
     })).then(()=> {
       dispatch(clearAddForm());
       dispatch(setAddIndex(null));
@@ -49,6 +65,7 @@ export const Item = () => {
       name: newName,
       quantity: newQty,
       notes: newNotes,
+      createdAt: Date.now(),
     })).then(() => dispatch(clearAddForm()));
   };
   const handleEdit = (item: any) => {
@@ -98,6 +115,14 @@ export const Item = () => {
     <div className={style.itemcontainer}>
       <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
       <h1 className={style.top}>{catergory} - {groceryItems.length} items</h1>
+      <select value={sortBy}
+            onChange={(e)=> dispatch(setItemSortBy(e.target.value as any))} className={style.sort}>
+              <option value={"newest"}>Newest to Oldest</option>
+              <option value={"oldest"}>Oldest to Newest</option>
+              <option value={"az"}>A to Z</option>
+              <option value={"za"}>Z to A</option>
+            </select>
+
       <button className={style.smalladd} onClick={()=> dispatch(setAddIndex("MAIN" as any))}>add cart</button>
       {Object.keys(grouped).map((groupName) => (
         <div key={groupName} className={style.group}>
