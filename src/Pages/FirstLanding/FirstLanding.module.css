@@ -1,11 +1,11 @@
 .heading{
-    margin-top: 80px;
+    margin-top: 20px;
     text-align: center;
    color: rgb(114, 114, 114);
-   font-size: 40px;
 }
 .icon{
-    font-size: 320px;
+    margin-top: -20px;
+    font-size: 220px;
     text-align: center;
 }
 .skip{
@@ -30,15 +30,10 @@
 .welcome{
     color: rgb(255, 52, 85);
     text-align: center;
-    margin-top: -35px;
-    font-size: 30px;
+    margin-top: -65px;
 }
 .paragraph{
-    margin-bottom: 20px;
     color: rgb(116, 101, 101);
     text-align: center;
    
-}
-.nextBTN{
-    margin-top: 60px;
 }

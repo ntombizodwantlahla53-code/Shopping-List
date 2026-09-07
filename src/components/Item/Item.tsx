@@ -13,10 +13,14 @@ export const Item = () => {
   const { catergory } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const { items, inputCatergory, inputNotes, inputName, inputQuantity,inputImage, openIndex, addIndex, newName, newNotes, newQty, sortBy } = useSelector((state: RootState) => state.items);
+  const user = useSelector((state: RootState) => state.login.user);
 
   useEffect(() => {
-     dispatch(fetchItems()); 
-    }, [dispatch]);
+     if (user?.id) {
+    dispatch(fetchItems(user.id));
+  }
+}, [user?.id, dispatch]);
+
   const groceryItems = items.filter((i) => i.category === catergory);
   const sortedItems = [...groceryItems].sort((a, b) => {
     if(sortBy==="az"){
@@ -50,6 +54,7 @@ export const Item = () => {
       category: catergory,
       catergory: inputCatergory,
       name: inputName,
+      userId: user!.id,
       quantity: Number(inputQuantity) || 1,
       notes: inputNotes,
       image: inputImage,
@@ -57,7 +62,9 @@ export const Item = () => {
     })).then(()=> {
       dispatch(clearAddForm());
       dispatch(setAddIndex(null));
-      dispatch(fetchItems());
+      if (user?.id !== undefined) {
+        dispatch(fetchItems(user.id));
+      }
     })
   };
   const handleAddToGroup = (groupName: string) => {
@@ -66,6 +73,7 @@ export const Item = () => {
       category: catergory,
       catergory: groupName,
       name: newName,
+      userId: user!.id,
       quantity: Number(newQty) ||1,
       notes: newNotes.trim() ? newNotes: undefined,
       image: inputImage ? inputImage : undefined,

@@ -69,7 +69,7 @@ export const Home = () => {
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchLists(user.id));
-      dispatch(fetchItems());
+      dispatch(fetchItems(user.id));
     }
   }, [user?.id, dispatch]);
 

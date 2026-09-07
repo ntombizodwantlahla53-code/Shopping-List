@@ -7,6 +7,7 @@ export interface Item {
   category: string;
   notes?: string;
   name: string;
+  userId?: number;
   quantity: number;
   image? :string;
   createdAt?: number;
@@ -56,9 +57,9 @@ export const fetchItem = createAsyncThunk("items/fetchItem", async (item: Item) 
   if (!response.ok) throw new Error("Failed to add item");
   return await response.json();
 });
-export const fetchItems = createAsyncThunk("items/fetchItems", async () => 
+export const fetchItems = createAsyncThunk("items/fetchItems", async (userId: number) => 
   {
-  const response = await fetch(`http://localhost:3000/items`);
+  const response = await fetch(`http://localhost:3000/items?userId=${userId}`);
   if (!response.ok) throw new Error("Failed to get items");
   return await response.json();
 });
