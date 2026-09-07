@@ -21,11 +21,11 @@
     width: 70vw;
 }
 .nn{
-    background: #a4a0a0;
+    background: #b8b6b6;
      padding: 10px;
       margin-bottom: 10px;
       border-radius: 25px;
-      text-align: center;
+    
 }
 .text{
     display: flex;
@@ -41,8 +41,9 @@
     margin-top: 10px;
 }
 .itemcontainer{
-    width: 80vw;
-    max-height: 95vh;
+    width: 95vw;
+    max-width: 90%;
+    height: 95vh;
     border: solid black;
     margin: 20px auto; 
     padding: 25px;

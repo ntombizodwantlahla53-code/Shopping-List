@@ -2,8 +2,9 @@
     background-color: rgb(177, 175, 175);
     border: solid black;
     border-radius: 24px;
-    width: 70vw;
-    max-width: 100%;
+    width: 95vw;
+    max-width: 90%;
+    height: 95vh;
     margin: 20px auto; 
     padding: 25px;
     box-sizing: border-box;
@@ -103,4 +104,7 @@ label{
   text-align: start;
   margin-bottom: 40px;
   
+}
+.btn{
+  margin-top: 35%;
 }

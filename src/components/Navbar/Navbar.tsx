@@ -30,7 +30,7 @@ export const Navbar =() => {
             <div className={styles.heading}>
           <label>Search <BsFillSearchHeartFill/> :
           <input className={styles.ss}type="text"
-          placeholder='searhlist'
+          placeholder='Search list'
           value={searchTerm}
           onChange={(e) =>dispatch(setSearchTerm(e.target.value))}
           /></label >

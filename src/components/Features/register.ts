@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import CryptoJS from "crypto-js";
 
 export interface Register {
   id?: number;
@@ -34,12 +35,22 @@ export const fetchRegs = createAsyncThunk(
   "regs/fetchRegs",
   async (register: Register, thunkAPI) => {
     try {
+      const encryptedPassword = CryptoJS.AES.encrypt(
+        register.password,
+        "mySecretKey"
+      ).toString();
+
+      const encryptedRegister = {
+        ...register,
+        password: encryptedPassword,
+        confirmPassword: encryptedPassword,
+      };
       const response = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(register),
+        body: JSON.stringify(encryptedRegister),
       });
 
       if (!response.ok) {

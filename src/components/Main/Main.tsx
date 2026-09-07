@@ -58,10 +58,11 @@ export const Main = () => {
               </div>
             <div className={styles.desc}><label></label>
               </div>
+              <div className={styles.btn}>
               <Buttons type="submit"
                 label="ADD YOUR LIST"
                 icon={<IoIosAddCircle />}
-                variant="inputting"/>
+                variant="inputting"/></div>
               {error && (<p>{error}</p>)} {/*if thes error, show the error message*/}
             </div>
           </div>

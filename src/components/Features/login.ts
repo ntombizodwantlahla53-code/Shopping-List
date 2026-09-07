@@ -1,6 +1,7 @@
 import {createSlice,createAsyncThunk,} from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Register } from "./register";
+import CryptoJS from "crypto-js";
 
 interface LoginState {
   info: {
@@ -31,9 +32,14 @@ export const fetchLogins = createAsyncThunk("logins/fetchLogins",async (login: {
       if (data.length === 0) {
         throw new Error("Invalid email, Try again");
       }
-      if (data[0].password !== login.password) {
-        throw new Error("Incorrect password");
-      }
+      const decryptedPassword = CryptoJS.AES.decrypt(
+  data[0].password,
+  "mySecretKey"
+).toString(CryptoJS.enc.Utf8);
+
+if (decryptedPassword !== login.password) {
+  throw new Error("Incorrect password");
+}
       return data[0];
     } catch (error) {
       return thunkAPI.rejectWithValue(

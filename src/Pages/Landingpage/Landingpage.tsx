@@ -16,10 +16,11 @@ export const Landingpage = () => {
             <h2 className={style.welcome} >Create and share</h2>
             <p className={style.paragraph}>Share shopping list with family<br/>and friends.</p>
         </div>
+        <div className={style.nextBTN}>
         <Link to="/login"><Buttons type="submit"
                     label ="Next"
                     icon={< ImNext/>}
-                    variant="inputting"/></Link>
+                    variant="inputting"/></Link></div>
        
     </div>
   )

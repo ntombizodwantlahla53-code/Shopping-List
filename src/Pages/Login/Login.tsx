@@ -62,6 +62,7 @@ export const Login = () => {
             <p className={styles.password}>
               Forgot Password
             </p>
+            
             <Buttons type="submit"
               label={loginInfo.loading ? "Logging in..." : "Log in"}
               icon={<IoIosAddCircle />}
