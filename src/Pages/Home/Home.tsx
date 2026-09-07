@@ -6,7 +6,7 @@ import { Buttons } from "../../components/Buttons/Button";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../Redux/store";
 import { deleteItem, fetchLists, editItem , setSortBy} from "../../components/Features/list";
-import { fetchItems } from "../../components/Features/items";
+import { fetchItems ,editItemThunk} from "../../components/Features/items";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
@@ -79,11 +79,40 @@ export const Home = () => {
   };
 
   const handleEdit = (id?: number, catergory?: string) => {
-    if (!id) return;
-    const newCategory = prompt("enter new cart:", catergory);
-    if (!newCategory ||!user?.id) return;
-    dispatch(editItem({ id, catergory: newCategory, userId: user.id ,createdAt: Date.now()}));
-  };
+
+  if (!id || !user?.id) return;
+
+  const newCategory = prompt("enter new cart:", catergory);
+
+  if (!newCategory || newCategory === catergory) return;
+
+  dispatch(
+    editItem({
+      id,
+      catergory: newCategory,
+      userId: user.id,
+      createdAt: Date.now(),
+    })
+  );
+
+  const categoryItems = items.filter(
+    (item) =>
+      item.category === catergory &&
+      item.userId === user.id
+  );
+
+  categoryItems.forEach((item) => {
+    if (item.id) {
+      dispatch(
+        editItemThunk({
+          ...item,
+          category: newCategory,
+          catergory: newCategory,
+        })
+      );
+    }
+  });
+};
 
   return (
     <div className={style.home}>
