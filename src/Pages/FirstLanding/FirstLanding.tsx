@@ -12,7 +12,7 @@ export const FirstLanding = () => {
       <div className={style.skip}>
         <Link to = "/login" >Skip</Link>
       </div>
-            <h1 className={style.heading}><FaShopify/>-list <FaShopify/></h1>
+            <h1 className={style.heading}><FaShopify/>S-list <FaShopify/></h1>
            
             <div className={style.icon}><CiShop/></div>
             <h2 className={style.welcome}>Welcome to S-list</h2>

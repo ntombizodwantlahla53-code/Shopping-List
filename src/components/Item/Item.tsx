@@ -100,7 +100,7 @@ export const Item = () => {
       <Link to="/home"><div className={style.bc}><MdArrowBackIos /></div></Link>
       {groceryItems.length> 0 && <button className={style.cancel} onClick={() =>dispatch(setAddIndex(null))}><FcCancel/>Cancel</button>}
 <div className={style.addForm}>
-        <h3>Add new category item to {catergory}</h3>
+        <h3 className={style.h3}>Add new category item to {catergory}</h3>
         <input className={style.in} value={inputCatergory}
         onChange={(e) => dispatch(setItemCatergory(e.target.value))} 
         placeholder="Category" />

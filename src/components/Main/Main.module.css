@@ -108,3 +108,14 @@ label{
 .btn{
   margin-top: 35%;
 }
+@media(width<=1025px) and (width>=1024px){
+  .Mytitle{
+    font-size: 25px;
+  }
+  .inputdesc{
+    margin-bottom: 15px;
+  }
+  .inputtitle{
+     margin-bottom: 15px;
+  }
+}

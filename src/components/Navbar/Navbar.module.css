@@ -40,9 +40,10 @@ display: flex;
   background: rgb(255, 52, 85);
   color: white;
   height: 40px;
+  border: none;
 }
 .sNow:hover{
-    color:orange;
+    color: black;
 
 }
 .ss{
