@@ -1,12 +1,12 @@
 .heading{
-    margin-top: 20px;
+    margin-top: 80px;
     text-align: center;
    color: rgb(114, 114, 114);
-  
+  font-size: 40px;
 }
 .icon{
     margin-top: -15px;
-    font-size: 220px;
+    font-size: 320px;
     text-align: center;
 
 }
@@ -25,7 +25,8 @@
 .welcome{
     color: rgb(255, 52, 85);
     text-align: center;
-    margin-top: -60px;
+    margin-top: -35px;
+    font-size: 30px;
 }
 .paragraph{
     margin-bottom: 20px;
@@ -36,6 +37,9 @@
 .bc{
     text-align: start;
     color:black
+}
+.nextBTN{
+    margin-top: 60px;
 }
 
 
